@@ -14,12 +14,8 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Example {
-    id String @id @default(cuid())
-}
-
 // Necessary for Next auth
-model Account {
+model Account {d
     id                String  @id @default(cuid())
     userId            String
     type              String
