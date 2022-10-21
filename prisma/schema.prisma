@@ -15,7 +15,7 @@ datasource db {
 }
 
 // Necessary for Next auth
-model Account {d
+model Account {
     id                String  @id @default(cuid())
     userId            String
     type              String
