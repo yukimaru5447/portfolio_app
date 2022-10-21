@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  dev-postgres:
+    image: postgres:14.4-alpine
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_USER: portfolio_app
+      POSTGRES_PASSWORD: portfolio_app
+      POSTGRES_DB: portfolio_app
+    restart: always
+    networks:
+      - lesson
+networks:
+  lesson:
