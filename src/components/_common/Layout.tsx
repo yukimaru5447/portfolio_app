@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode
 }
 
-export const Layout: FC<Props> = ({ children, title = 'T3 Stack' }) => {
+export const Layout: FC<Props> = ({ children, title = 'PortfolioApp' }) => {
   return (
     <>
       <Head>
