@@ -1,12 +1,24 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { trpc } from '../utils/trpc'
+import { Layout, Auth, Header } from '../components/_common/_index'
 
 const Home: NextPage = () => {
   const { data: session } = useSession()
 
-  return <h1>portfolio_app</h1>
+  if (!session) {
+    return (
+      <Layout title="Login">
+        <Auth />
+      </Layout>
+    )
+  }
+
+  return (
+    <>
+      <Header />
+    </>
+  )
 }
 
 export default Home
