@@ -6,16 +6,6 @@ import { SearchBlock } from '../components/organisms/SearchBlock'
 import { PortfolioCard } from '../components/organisms/PortfolioCard'
 
 const Home: NextPage = () => {
-  const { data: session } = useSession()
-
-  // if (!session) {
-  //   return (
-  //     <Layout title="Login">
-  //       <Auth />
-  //     </Layout>
-  //   )
-  // }
-
   return (
     <>
       <Header />
