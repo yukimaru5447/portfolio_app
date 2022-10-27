@@ -12,16 +12,16 @@ export const Header: FC = () => {
   return (
     <header className="justify-between bg-slate-300 md:flex">
       <Link href={'/'}>
-        <a className="ml-4 p-4 text-2xl font-bold text-slate-500 hover:text-slate-700">
+        <span className="ml-4 p-4 text-2xl font-bold text-slate-500 hover:text-slate-700">
           PortfolioApp
-        </a>
+        </span>
       </Link>
 
       <div className="mr-4 flex justify-between space-x-4 p-4">
         <Link href={'/post'}>
-          <a className="inline-flex justify-center rounded-md bg-slate-500 px-4 py-2 text-sm font-medium text-white hover:bg-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+          <span className="inline-flex justify-center rounded-md bg-slate-500 px-4 py-2 text-sm font-medium text-white hover:bg-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
             投稿
-          </a>
+          </span>
         </Link>
 
         <Menu as="div" className="relative inline-block text-left">
