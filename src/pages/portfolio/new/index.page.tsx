@@ -1,14 +1,13 @@
 import type { NextPage } from 'next'
-import { signIn, signOut, useSession } from 'next-auth/react'
-import { trpc } from '../utils/trpc'
-import { Layout, Auth, Header } from '../components/_common/_index'
-import { ImageField } from '../components/atoms/ImageField'
-import { TextField } from '../components/atoms/TextField'
-import { TextArea } from '../components/atoms/TextArea'
-import { LinkBar } from '../components/atoms/LinkBar'
+import { useSession } from 'next-auth/react'
+import { Layout, Auth } from '../../../components/_common/_index'
+import ImageField from '../../../components/organisms/ImageField'
+import { TextField } from '../../../components/atoms/TextField'
+import { TextArea } from '../../../components/atoms/TextArea'
+import { LinkBar } from '../../../components/atoms/LinkBar'
 
-import { Button } from '../components/atoms/Button'
-import { Logo } from '../components/atoms/Logo'
+import { Button } from '../../../components/atoms/Button'
+import { Logo } from '../../../components/atoms/Logo'
 
 const Post: NextPage = () => {
   const { data: session } = useSession()
