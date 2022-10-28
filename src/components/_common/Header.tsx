@@ -1,5 +1,5 @@
 import React, { FC, Fragment } from 'react'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
 import {
   ArrowLeftOnRectangleIcon,
   ChevronDownIcon,

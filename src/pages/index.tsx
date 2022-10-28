@@ -1,7 +1,5 @@
 import type { NextPage } from 'next'
-import { signIn, signOut, useSession } from 'next-auth/react'
-import { trpc } from '../utils/trpc'
-import { Layout, Auth, Header, Footer } from '../components/_common/_index'
+import { Header, Footer } from '../components/_common/_index'
 import { SearchBlock } from '../components/organisms/SearchBlock'
 import { PortfolioCard } from '../components/organisms/PortfolioCard'
 
