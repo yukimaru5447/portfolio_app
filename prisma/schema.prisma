@@ -14,6 +14,18 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
+model Portfolio {
+    id  String @unique @default(cuid())
+    title String
+    description String
+    serviceUrl String
+    githubUrl String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    user   User   @relation(fields: [userId], references: [id])
+    userId String
+}
+
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid())
@@ -49,6 +61,7 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    portfolios    Portfolio[]
 }
 
 model VerificationToken {
