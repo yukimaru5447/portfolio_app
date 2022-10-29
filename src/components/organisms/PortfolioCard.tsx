@@ -1,7 +1,11 @@
 import Image from 'next/image'
 import React, { FC } from 'react'
 
-export const PortfolioCard: FC = () => {
+type Props = {
+  title: string
+}
+
+export const PortfolioCard: FC<Props> = ({ title }) => {
   return (
     <div className="m-4 h-72 w-96">
       <a
@@ -17,9 +21,7 @@ export const PortfolioCard: FC = () => {
         />
 
         <div className="m-4 flex">
-          <h3 className="text-xl font-bold">
-            制作物を共有できるサービスをNext.jsで作成する
-          </h3>
+          <h3 className="text-xl font-bold">{title}</h3>
         </div>
       </a>
     </div>
