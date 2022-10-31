@@ -18,11 +18,13 @@ const ImageField = () => {
   const handleResetImage = useCallback(() => {
     setPortfolioImage(null)
   }, [])
+
   return (
     <div className="relative h-60 w-2/3 rounded-xl bg-slate-300 pt-6">
       <ImageInput
         className="absolute h-full w-full opacity-0"
         onChange={handleSetImage}
+        disabled={portfolioImage ? true : false}
       />
       <div className="just flex items-center justify-center">
         {portfolioImage ? (
