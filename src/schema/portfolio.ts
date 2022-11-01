@@ -7,4 +7,8 @@ export const postPortfolioSchema = z.object({
   githubUrl: z.string().max(100),
 })
 
+export const getPortfolioSchema = z.object({
+  id: z.string(),
+})
+
 export type PostPortfolioInput = z.TypeOf<typeof postPortfolioSchema>

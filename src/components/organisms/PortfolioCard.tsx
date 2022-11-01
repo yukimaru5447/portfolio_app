@@ -1,15 +1,17 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { FC } from 'react'
 
 type Props = {
+  id: string
   title: string
 }
 
-export const PortfolioCard: FC<Props> = ({ title }) => {
+export const PortfolioCard: FC<Props> = ({ id, title }) => {
   return (
     <div className="m-4 h-72 w-96">
-      <a
-        href="#"
+      <Link
+        href={`portfolio/${id}`}
         className="block overflow-hidden rounded-lg border border-gray-100 shadow-sm"
       >
         <Image
@@ -23,7 +25,7 @@ export const PortfolioCard: FC<Props> = ({ title }) => {
         <div className="m-4 flex">
           <h3 className="text-xl font-bold">{title}</h3>
         </div>
-      </a>
+      </Link>
     </div>
   )
 }
