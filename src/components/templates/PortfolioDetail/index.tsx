@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router'
 import ImageField from '@/components/organisms/ImageField'
-import { TextField } from '../../../components/atoms/TextField'
-import { TextArea } from '../../../components/atoms/TextArea'
-import { LinkBar } from '../../../components/atoms/LinkBar'
-import { Button } from '../../../components/atoms/Button'
-import { Logo } from '../../../components/atoms/Logo'
+import { TextField } from '@/components/atoms/TextField'
+import { TextArea } from '@/components/atoms/TextArea'
+import { LinkBar } from '@/components/atoms/LinkBar'
+import { Button } from '@/components/atoms/Button'
+import { Logo } from '@/components/atoms/Logo'
 import { FC, FormEvent, useState } from 'react'
-import { useMutatePortfolio } from '../../../hooks/useMutatePortfolio'
+import { useMutatePortfolio } from '@/hooks/useMutatePortfolio'
 import { Portfolio } from '@prisma/client'
 
 type Props = {
