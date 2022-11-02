@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import ImageField from '../../../components/organisms/ImageField'
+import ImageField from '@/components/organisms/ImageField'
 import { TextField } from '../../../components/atoms/TextField'
 import { TextArea } from '../../../components/atoms/TextArea'
 import { LinkBar } from '../../../components/atoms/LinkBar'
