@@ -4,7 +4,7 @@ type Props = {
   image: File | null
 }
 
-export const useHooks = ({ image }: Props) => {
+const useHooks = ({ image }: Props) => {
   const [url, setUrl] = useState<string>('')
   const isLoading = image && !url
 
@@ -28,3 +28,5 @@ export const useHooks = ({ image }: Props) => {
   }, [image])
   return { url, isLoading }
 }
+
+export default useHooks

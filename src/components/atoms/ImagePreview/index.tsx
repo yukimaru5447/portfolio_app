@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { FC } from 'react'
-import { useHooks } from './hooks'
+
+import useHooks from './hooks'
 
 type Props = {
   image: File | null

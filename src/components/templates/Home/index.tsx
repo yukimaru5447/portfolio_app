@@ -1,36 +1,17 @@
-import { trpc } from '@/utils/trpc'
-import { useTranslation } from 'react-i18next'
 import { FC } from 'react'
+
 import { PortfolioCard } from '@/components/organisms'
+import useHooks from './hooks'
 
 const Home: FC = () => {
-  const { t } = useTranslation(['home'])
-  const {
-    data: portfolios,
-    isLoading,
-    error,
-  } = trpc.portfolio.getAllPortfolios.useQuery()
+  const { isLoading, error, portfolioGridRows } = useHooks()
+
   if (isLoading) {
     return <p>Loading...</p>
   }
   if (error) {
     return <p>{error.message}</p>
   }
-
-  const portfolioGridRows = [
-    {
-      label: t('home:New'),
-      row: portfolios,
-    },
-    {
-      label: t('home:Attention'),
-      row: portfolios,
-    },
-    {
-      label: t('home:Recommendation'),
-      row: portfolios,
-    },
-  ]
 
   return (
     <>
@@ -44,9 +25,10 @@ const Home: FC = () => {
               {grid.label}
             </div>
             <div className="flex w-full justify-center">
-              {grid.row.map(({ id, title }) => (
-                <PortfolioCard key={id} id={id} title={title} />
-              ))}
+              {grid.row &&
+                grid.row.map(({ id, title }) => (
+                  <PortfolioCard key={id} id={id} title={title} />
+                ))}
             </div>
           </div>
         ))}

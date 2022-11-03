@@ -1,6 +1,6 @@
-import { trpc } from '../utils/trpc'
 import type { NextPage } from 'next'
-import { Header, Footer } from '../components/_common/_index'
+
+import { Footer, Header } from '@/components/_common/_index'
 import Home from '@/components/templates/Home'
 import { SearchBlock } from '@/components/organisms'
 

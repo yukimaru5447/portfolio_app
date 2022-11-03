@@ -1,27 +1,16 @@
-import React, { FC, useCallback, useState } from 'react'
-import { ImageInput, ImagePreview } from '../../atoms'
+import { FC } from 'react'
 import { PhotoIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
+
+import { ImageInput, ImagePreview } from '@/components/atoms'
+import useHooks from './hooks'
 
 type Props = {
   imageUrl?: string
 }
 
 const ImageField: FC<Props> = ({ imageUrl }) => {
-  const [portfolioImage, setPortfolioImage] = useState<File | null>(null)
-
-  const handleSetImage = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (e.currentTarget?.files && e.currentTarget.files[0]) {
-        setPortfolioImage(e.currentTarget.files[0])
-      }
-    },
-    [],
-  )
-
-  const handleResetImage = useCallback(() => {
-    setPortfolioImage(null)
-  }, [])
+  const { portfolioImage, handleSetImage, handleResetImage } = useHooks()
 
   return (
     <>

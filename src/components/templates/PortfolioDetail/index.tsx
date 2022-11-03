@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router'
+import { FC } from 'react'
+import { Portfolio } from '@prisma/client'
+
 import ImageField from '@/components/organisms/ImageField'
 import { TextField, TextArea, LinkBar, Button, Logo } from '@/components/atoms'
-import { FC, FormEvent, useState } from 'react'
-import { useMutatePortfolio } from '@/hooks/useMutatePortfolio'
-import { Portfolio } from '@prisma/client'
+import useHooks from './hooks'
 
 type Props = {
   portfolio?: Pick<
@@ -13,25 +13,18 @@ type Props = {
 }
 
 const PortfolioDetail: FC<Props> = ({ portfolio }) => {
-  const router = useRouter()
-  const { postPortfolioMutation } = useMutatePortfolio()
-  const isNew = !portfolio
-
-  const [title, setTitle] = useState<string>('')
-  const [description, setDescription] = useState<string>('')
-  const [serviceUrl, setServiceUrl] = useState<string>('')
-  const [githubUrl, setGithubUrl] = useState<string>('')
-
-  const create = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    postPortfolioMutation.mutate({
-      title,
-      description,
-      serviceUrl,
-      githubUrl,
-    })
-    router.push('/')
-  }
+  const {
+    isNew,
+    title,
+    description,
+    serviceUrl,
+    githubUrl,
+    create,
+    setTitle,
+    setDescription,
+    setServiceUrl,
+    setGithubUrl,
+  } = useHooks({ portfolio })
 
   return (
     <form onSubmit={isNew ? create : undefined}>

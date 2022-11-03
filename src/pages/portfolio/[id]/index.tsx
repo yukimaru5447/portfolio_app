@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
+
 import { Layout, Auth } from '@/components/_common/_index'
 import PortfolioDetail from '@/components/templates/PortfolioDetail'
 import { usePortfolio } from '@/hooks/usePortfolio'
