@@ -8,8 +8,11 @@ import {
 import Link from 'next/link'
 import { Menu, Transition } from '@headlessui/react'
 import { Logo } from '../atoms/Logo'
+import { useTranslation } from 'react-i18next'
 
 export const Header: FC = () => {
+  const { t } = useTranslation(['common', 'home'])
+  console.log(t('home:Post'))
   return (
     <header className="justify-between bg-slate-300 md:flex">
       <Logo />
@@ -19,12 +22,12 @@ export const Header: FC = () => {
           href={'/portfolio/new'}
           className="inline-flex justify-center rounded-md bg-slate-500 px-4 py-2 text-sm font-medium text-white hover:bg-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
         >
-          投稿
+          {t('common:Post')}
         </Link>
 
         <Menu as="div" className="relative inline-block text-left">
           <Menu.Button className="inline-flex w-full justify-center rounded-md bg-slate-500 px-4 py-2 text-sm font-medium text-white hover:bg-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
-            メニュー
+            {t('common:Menu')}
             <ChevronDownIcon
               className="ml-2 -mr-1 h-5 w-5 text-slate-200 hover:text-slate-100"
               aria-hidden="true"
@@ -60,7 +63,7 @@ export const Header: FC = () => {
                           aria-hidden="true"
                         />
                       )}
-                      プロフィール
+                      {t('common:Profile')}
                     </button>
                   )}
                 </Menu.Item>
@@ -85,7 +88,7 @@ export const Header: FC = () => {
                           aria-hidden="true"
                         />
                       )}
-                      ログアウト
+                      {t('common:Logout')}
                     </button>
                   )}
                 </Menu.Item>
