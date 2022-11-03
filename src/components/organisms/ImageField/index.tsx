@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useState } from 'react'
-import { ImageInput, ImagePreview } from '../atoms'
+import { ImageInput, ImagePreview } from '../../atoms'
 import { PhotoIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 

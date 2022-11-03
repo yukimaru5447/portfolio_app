@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 
-export const SearchBlock: FC = () => {
+const SearchBlock: FC = () => {
   return (
     <div className="flex h-48 items-center justify-center bg-slate-300">
       <div className="relative flex w-2/3 items-end text-gray-600">
@@ -17,3 +17,5 @@ export const SearchBlock: FC = () => {
     </div>
   )
 }
+
+export default SearchBlock

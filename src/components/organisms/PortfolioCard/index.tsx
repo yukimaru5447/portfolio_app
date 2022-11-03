@@ -7,7 +7,7 @@ type Props = {
   title: string
 }
 
-export const PortfolioCard: FC<Props> = ({ id, title }) => {
+const PortfolioCard: FC<Props> = ({ id, title }) => {
   return (
     <div className="m-4 h-72 w-96">
       <Link
@@ -29,3 +29,5 @@ export const PortfolioCard: FC<Props> = ({ id, title }) => {
     </div>
   )
 }
+
+export default PortfolioCard

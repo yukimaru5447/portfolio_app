@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
+import { useHooks } from './hooks'
 
 type Props = {
   image: File | null
@@ -8,35 +9,12 @@ type Props = {
 }
 
 export const ImagePreview: FC<Props> = ({ image, ...props }) => {
-  const [url, setUrl] = useState<string>('')
-  const isLoading = image && !url
+  const { isLoading, url } = useHooks({ image })
 
-  useEffect(() => {
-    if (!image) {
-      return
-    }
+  if (isLoading) <>ローディング中...</>
+  if (!image) return null
 
-    let reader: FileReader | null = new FileReader()
-    reader.onloadend = () => {
-      const res = reader?.result
-      if (res && typeof res === 'string') {
-        setUrl(res)
-      }
-    }
-    reader.readAsDataURL(image)
-
-    return () => {
-      reader = null
-    }
-  }, [image])
-
-  return image ? (
-    isLoading ? (
-      <>ローディング中...</>
-    ) : (
-      <Image src={url} alt={image.name} {...props} />
-    )
-  ) : null
+  return <Image src={url} alt={image.name} {...props} />
 }
 
 export default ImagePreview
