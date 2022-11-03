@@ -38,3 +38,5 @@ export const ImagePreview: FC<ImagePreviewProps> = ({ image, ...props }) => {
     )
   ) : null
 }
+
+export default ImagePreview

@@ -7,12 +7,11 @@ import {
 } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import { Menu, Transition } from '@headlessui/react'
-import { Logo } from '../atoms/Logo'
+import { Logo } from '../atoms'
 import { useTranslation } from 'react-i18next'
 
 export const Header: FC = () => {
   const { t } = useTranslation(['common', 'home'])
-  console.log(t('home:Post'))
   return (
     <header className="justify-between bg-slate-300 md:flex">
       <Logo />

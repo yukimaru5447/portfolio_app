@@ -7,7 +7,7 @@ type Props = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const LinkBar: FC<Props> = ({ name, value, readOnly, onChange }) => {
+const LinkBar: FC<Props> = ({ name, value, readOnly, onChange }) => {
   return (
     <div className="flex w-2/3">
       <div className="text-ms flex h-12 w-28 items-center justify-center rounded-l-lg  bg-slate-300 text-center font-semibold text-white">
@@ -24,3 +24,4 @@ export const LinkBar: FC<Props> = ({ name, value, readOnly, onChange }) => {
     </div>
   )
 }
+export default LinkBar

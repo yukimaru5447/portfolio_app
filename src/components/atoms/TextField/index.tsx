@@ -20,3 +20,4 @@ export const TextField: FC<Props> = ({ value, readOnly, onChange }) => {
     </div>
   )
 }
+export default TextField

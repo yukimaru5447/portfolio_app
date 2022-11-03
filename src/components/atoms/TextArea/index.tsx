@@ -21,3 +21,4 @@ export const TextArea: FC<Props> = ({ value, readOnly, onChange }) => {
     </div>
   )
 }
+export default TextArea

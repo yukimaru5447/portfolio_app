@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
 
-export const Logo: FC = () => {
+const Logo: FC = () => {
   return (
     <Link
       href={'/'}
@@ -11,3 +11,4 @@ export const Logo: FC = () => {
     </Link>
   )
 }
+export default Logo
