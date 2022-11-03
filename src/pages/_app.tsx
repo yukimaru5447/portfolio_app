@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import '@/utils/i18n'
+import '@/utils/constant/i18n'
 import { SessionProvider } from 'next-auth/react'
 import type { Session } from 'next-auth'
 import type { AppType } from 'next/app'
