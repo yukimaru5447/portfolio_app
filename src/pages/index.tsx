@@ -48,7 +48,7 @@ const Home: NextPage = () => {
               className="flex w-4/6 flex-col items-center justify-center"
             >
               <div className="w-full  text-2xl font-bold text-gray-600">
-                {t('home:New')}
+                {grid.label}
               </div>
               <div className="flex w-full justify-center">
                 {grid.row.map(({ id, title }) => (
