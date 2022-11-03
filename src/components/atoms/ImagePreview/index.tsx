@@ -1,13 +1,13 @@
 import Image from 'next/image'
 import { FC, useEffect, useState } from 'react'
 
-type ImagePreviewProps = {
+type Props = {
   image: File | null
   height: number
   width: number
 }
 
-export const ImagePreview: FC<ImagePreviewProps> = ({ image, ...props }) => {
+export const ImagePreview: FC<Props> = ({ image, ...props }) => {
   const [url, setUrl] = useState<string>('')
   const isLoading = image && !url
 

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 
 export const SearchBlock: FC = () => {

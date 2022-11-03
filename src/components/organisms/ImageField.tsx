@@ -1,6 +1,5 @@
-import React, { useCallback, useState } from 'react'
-import { ImageInput } from '../atoms/ImageInput'
-import { ImagePreview } from '../atoms/ImagePreview'
+import React, { FC, useCallback, useState } from 'react'
+import { ImageInput, ImagePreview } from '../atoms'
 import { PhotoIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 
@@ -8,7 +7,7 @@ type Props = {
   imageUrl?: string
 }
 
-const ImageField = ({ imageUrl }: Props) => {
+const ImageField: FC<Props> = ({ imageUrl }) => {
   const [portfolioImage, setPortfolioImage] = useState<File | null>(null)
 
   const handleSetImage = useCallback(
