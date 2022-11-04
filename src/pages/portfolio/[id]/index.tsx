@@ -4,13 +4,11 @@ import { useRouter } from 'next/router'
 
 import { Layout, Auth } from '@/components/_common/_index'
 import PortfolioDetail from '@/components/templates/PortfolioDetail'
-import { usePortfolio } from '@/hooks/usePortfolio'
 
 const PortfolioDetailPage: NextPage = () => {
   const router = useRouter()
   const { data: session } = useSession()
   const id = router.query.id as string
-  const { portfolio } = usePortfolio(id)
 
   if (!session) {
     return (
@@ -20,11 +18,7 @@ const PortfolioDetailPage: NextPage = () => {
     )
   }
 
-  if (!portfolio) {
-    return <p>Loading...</p>
-  }
-
-  return <PortfolioDetail portfolio={portfolio} />
+  return <PortfolioDetail id={id} />
 }
 
 export default PortfolioDetailPage

@@ -1,20 +1,19 @@
 import { FC } from 'react'
-import { Portfolio } from '@prisma/client'
 
 import ImageField from '@/components/organisms/ImageField'
 import { TextField, TextArea, LinkBar, Button, Logo } from '@/components/atoms'
 import useHooks from './hooks'
 
 type Props = {
-  portfolio?: Pick<
-    Portfolio,
-    'title' | 'description' | 'serviceUrl' | 'githubUrl'
-  >
+  id?: string
 }
 
-const PortfolioDetail: FC<Props> = ({ portfolio }) => {
+const PortfolioDetail: FC<Props> = ({ id }) => {
   const {
     isNew,
+    isLoading,
+    error,
+    portfolio,
     title,
     description,
     serviceUrl,
@@ -24,7 +23,14 @@ const PortfolioDetail: FC<Props> = ({ portfolio }) => {
     setDescription,
     setServiceUrl,
     setGithubUrl,
-  } = useHooks({ portfolio })
+  } = useHooks({ id })
+
+  if (isLoading) {
+    return <p>Loading...</p>
+  }
+  if (error) {
+    return <p>{error.message}</p>
+  }
 
   return (
     <form onSubmit={isNew ? create : undefined}>

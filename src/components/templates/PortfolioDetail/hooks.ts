@@ -1,18 +1,23 @@
 import { FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Portfolio } from '@prisma/client'
+import { trpc } from '@/utils/trpc'
 
 import { useMutatePortfolio } from '@/hooks/useMutatePortfolio'
 
 type Props = {
-  portfolio?: Pick<
-    Portfolio,
-    'title' | 'description' | 'serviceUrl' | 'githubUrl'
-  >
+  id?: string
 }
 
-const useHooks = ({ portfolio }: Props) => {
+const useHooks = ({ id }: Props) => {
+  const portfolioId = id ?? ''
   const router = useRouter()
+  const {
+    data: portfolio,
+    isLoading,
+    error,
+  } = trpc.portfolio.getPortfolio.useQuery({
+    id: portfolioId,
+  })
   const { postPortfolioMutation } = useMutatePortfolio()
   const isNew = !portfolio
 
@@ -34,6 +39,9 @@ const useHooks = ({ portfolio }: Props) => {
 
   return {
     isNew,
+    isLoading,
+    error,
+    portfolio,
     title,
     description,
     serviceUrl,
