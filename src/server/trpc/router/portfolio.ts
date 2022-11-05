@@ -18,22 +18,16 @@ export const portfolioRouter = t.router({
   postPortfolio: authedProcedure
     .input(postPortfolioSchema)
     .mutation(async ({ ctx, input }) => {
-      console.log('-----------')
-      console.log(ctx, input)
-      console.log('-----------')
-
-      // const portfolio = await ctx.prisma.portfolio.create({
-      //   data: {
-      //     ...input,
-      //     user: {
-      //       connect: {
-      //         id: ctx.session?.user?.id,
-      //       },
-      //     },
-      //   },
-      // })
-      // return portfolio
-      return {}
+      return await ctx.prisma.portfolio.create({
+        data: {
+          ...input,
+          user: {
+            connect: {
+              id: ctx.session?.user?.id,
+            },
+          },
+        },
+      })
     }),
   getAllPortfolios: t.procedure.query(({ ctx }) => {
     return ctx.prisma.portfolio.findMany({

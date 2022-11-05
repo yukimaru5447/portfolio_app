@@ -5,6 +5,7 @@ import * as z from 'zod'
 
 import { trpc } from '@/utils/trpc'
 import { useMutatePortfolio } from '@/hooks/useMutatePortfolio'
+import { useEffect } from 'react'
 
 type Props = {
   id?: string
@@ -38,26 +39,26 @@ const useHooks = ({ id }: Props) => {
   }
   type DefaultValues = typeof defaultValues
 
-  const { control, handleSubmit } = useForm<DefaultValues>({
+  const { control, setValue, handleSubmit } = useForm<DefaultValues>({
     resolver: zodResolver(schema),
     defaultValues,
   })
 
-  const create = (values: DefaultValues) => {
-    console.log('作成')
-    console.log(values)
+  useEffect(() => {
+    if (!portfolio) return
 
-    // postPortfolioMutation.mutate({
-    //   title,
-    //   description,
-    //   serviceUrl,
-    //   githubUrl,
-    // })
-    // router.push('/')
-    // postPortfolioMutation.mutate({
-    //   ...values,
-    // })
-    // router.push('/')
+    setValue('title', portfolio.title)
+    setValue('description', portfolio.description)
+    setValue('serviceUrl', portfolio.serviceUrl)
+    setValue('githubUrl', portfolio.githubUrl)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [portfolio])
+
+  const create = (values: DefaultValues) => {
+    postPortfolioMutation.mutate({
+      ...values,
+    })
+    router.push('/')
   }
 
   return {
