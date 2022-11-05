@@ -1,7 +1,14 @@
 import { FC } from 'react'
 
 import ImageField from '@/components/organisms/ImageField'
-import { TextField, TextArea, LinkBar, Button, Logo } from '@/components/atoms'
+import {
+  TextField,
+  TextArea,
+  LinkBar,
+  Button,
+  Logo,
+  Loading,
+} from '@/components/atoms'
 import useHooks from './hooks'
 
 type Props = {
@@ -26,7 +33,7 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
   } = useHooks({ id })
 
   if (isLoading) {
-    return <p>Loading...</p>
+    return <Loading />
   }
   if (error) {
     return <p>{error.message}</p>

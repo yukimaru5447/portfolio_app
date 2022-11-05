@@ -2,12 +2,13 @@ import { FC } from 'react'
 
 import { PortfolioCard } from '@/components/organisms'
 import useHooks from './hooks'
+import { Loading } from '@/components/atoms'
 
 const Home: FC = () => {
   const { isLoading, error, portfolioGridRows } = useHooks()
 
   if (isLoading) {
-    return <p>Loading...</p>
+    return <Loading />
   }
   if (error) {
     return <p>{error.message}</p>
