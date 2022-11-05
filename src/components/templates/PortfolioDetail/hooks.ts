@@ -1,22 +1,17 @@
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
 
 import { trpc } from '@/utils/trpc'
 import { useMutatePortfolio } from '@/hooks/useMutatePortfolio'
 import { useEffect } from 'react'
+import { postPortfolioSchema, PostPortfolioInput } from '@/schema/portfolio'
 
 type Props = {
   id?: string
 }
 
-const schema = z.object({
-  title: z.string(),
-  description: z.string(),
-  serviceUrl: z.string(),
-  githubUrl: z.string(),
-})
+type DefaultValues = PostPortfolioInput
 
 const useHooks = ({ id }: Props) => {
   const portfolioId = id ?? ''
@@ -37,10 +32,9 @@ const useHooks = ({ id }: Props) => {
     serviceUrl: '',
     githubUrl: '',
   }
-  type DefaultValues = typeof defaultValues
 
   const { control, setValue, handleSubmit } = useForm<DefaultValues>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(postPortfolioSchema),
     defaultValues,
   })
 
