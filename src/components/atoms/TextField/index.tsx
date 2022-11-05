@@ -1,23 +1,32 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
+import { useController, Control } from 'react-hook-form'
+import Presentational from './TextField'
 
 type Props = {
-  value: string
+  name: string
+  control: Control<any>
+  defaultValue: string
   readOnly: boolean
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  placeholder: string
 }
 
-export const TextField: FC<Props> = ({ value, readOnly, onChange }) => {
+const TextField: FC<Props> = ({
+  name,
+  control,
+  defaultValue,
+  readOnly,
+  placeholder,
+}) => {
+  const { field } = useController({
+    name,
+    control,
+    rules: { required: true },
+    defaultValue,
+  })
+
   return (
-    <div className="w-2/3">
-      <input
-        type="text"
-        className="w-full bg-slate-100 py-4 px-2 text-left text-3xl font-semibold focus:outline-none"
-        placeholder="タイトル（32文字以内）"
-        value={value}
-        readOnly={readOnly}
-        onChange={(e) => onChange(e)}
-      />
-    </div>
+    <Presentational {...field} readOnly={readOnly} placeholder={placeholder} />
   )
 }
+
 export default TextField

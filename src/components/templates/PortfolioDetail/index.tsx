@@ -16,21 +16,10 @@ type Props = {
 }
 
 const PortfolioDetail: FC<Props> = ({ id }) => {
-  const {
-    isNew,
-    isLoading,
-    error,
-    portfolio,
-    title,
-    description,
-    serviceUrl,
-    githubUrl,
-    create,
-    setTitle,
-    setDescription,
-    setServiceUrl,
-    setGithubUrl,
-  } = useHooks({ id })
+  const { isNew, isLoading, error, control, defaultValues, portfolio, create } =
+    useHooks({
+      id,
+    })
 
   if (isLoading) {
     return <Loading />
@@ -44,8 +33,8 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
       <header className="flex justify-between bg-slate-100 md:flex">
         <Logo />
         <div className="flex justify-between">
-          <Button name="下書き保存" />
-          <Button name="ポートフォリオを投稿する" />
+          <Button name="下書き保存" type="button" />
+          <Button name="ポートフォリオを投稿する" type="submit" />
         </div>
       </header>
 
@@ -59,11 +48,13 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
           }
         />
         <TextField
-          value={portfolio ? portfolio?.title : title}
-          readOnly={!portfolio}
-          onChange={(e) => setTitle(e.target.value)}
+          name="title"
+          control={control}
+          defaultValue={portfolio ? portfolio?.title : defaultValues.title}
+          readOnly={!!portfolio}
+          placeholder={!!portfolio ? '' : 'タイトル（32文字以内）'}
         />
-        <TextArea
+        {/* <TextArea
           value={portfolio ? portfolio?.description : description}
           readOnly={!portfolio}
           onChange={(e) => setDescription(e.target.value)}
@@ -79,7 +70,7 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
           value={portfolio ? portfolio?.githubUrl : githubUrl}
           readOnly={!portfolio}
           onChange={(e) => setGithubUrl(e.target.value)}
-        />
+        /> */}
       </div>
     </form>
   )

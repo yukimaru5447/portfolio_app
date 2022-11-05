@@ -1,12 +1,21 @@
-import { FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
-import { trpc } from '@/utils/trpc'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
 
+import { trpc } from '@/utils/trpc'
 import { useMutatePortfolio } from '@/hooks/useMutatePortfolio'
 
 type Props = {
   id?: string
 }
+
+const schema = z.object({
+  title: z.string(),
+  description: z.string(),
+  serviceUrl: z.string(),
+  githubUrl: z.string(),
+})
 
 const useHooks = ({ id }: Props) => {
   const portfolioId = id ?? ''
@@ -21,36 +30,44 @@ const useHooks = ({ id }: Props) => {
   const { postPortfolioMutation } = useMutatePortfolio()
   const isNew = !portfolio
 
-  const [title, setTitle] = useState<string>('')
-  const [description, setDescription] = useState<string>('')
-  const [serviceUrl, setServiceUrl] = useState<string>('')
-  const [githubUrl, setGithubUrl] = useState<string>('')
+  const defaultValues = {
+    title: '',
+    description: '',
+    serviceUrl: '',
+    githubUrl: '',
+  }
+  type DefaultValues = typeof defaultValues
 
-  const create = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    postPortfolioMutation.mutate({
-      title,
-      description,
-      serviceUrl,
-      githubUrl,
-    })
-    router.push('/')
+  const { control, handleSubmit } = useForm<DefaultValues>({
+    resolver: zodResolver(schema),
+    defaultValues,
+  })
+
+  const create = (values: DefaultValues) => {
+    console.log('作成')
+    console.log(values)
+
+    // postPortfolioMutation.mutate({
+    //   title,
+    //   description,
+    //   serviceUrl,
+    //   githubUrl,
+    // })
+    // router.push('/')
+    // postPortfolioMutation.mutate({
+    //   ...values,
+    // })
+    // router.push('/')
   }
 
   return {
     isNew,
     isLoading,
     error,
+    control,
+    defaultValues,
     portfolio,
-    title,
-    description,
-    serviceUrl,
-    githubUrl,
-    create,
-    setTitle,
-    setDescription,
-    setServiceUrl,
-    setGithubUrl,
+    create: handleSubmit(create),
   }
 }
 
