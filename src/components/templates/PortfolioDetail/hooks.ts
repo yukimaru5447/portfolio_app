@@ -48,7 +48,7 @@ const useHooks = ({ id }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [portfolio])
 
-  const create = (values: DefaultValues) => {
+  const create = async (values: DefaultValues) => {
     postPortfolioMutation.mutate({
       ...values,
     })
