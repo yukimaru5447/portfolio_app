@@ -54,12 +54,20 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
           readOnly={!!portfolio}
           placeholder={!!portfolio ? '' : 'タイトル（32文字以内）'}
         />
-        {/* <TextArea
-          value={portfolio ? portfolio?.description : description}
-          readOnly={!portfolio}
-          onChange={(e) => setDescription(e.target.value)}
+        <TextArea
+          name="description"
+          control={control}
+          defaultValue={
+            portfolio ? portfolio?.description : defaultValues.description
+          }
+          readOnly={!!portfolio}
+          placeholder={
+            !!portfolio
+              ? ''
+              : 'ポートフォリオの説明（マークダウン記法を使用できます）'
+          }
         />
-        <LinkBar
+        {/* <LinkBar
           name="URL"
           value={portfolio ? portfolio?.serviceUrl : serviceUrl}
           readOnly={!portfolio}

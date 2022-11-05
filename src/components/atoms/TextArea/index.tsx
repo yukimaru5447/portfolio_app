@@ -1,24 +1,29 @@
 import React, { FC } from 'react'
-import TextareaAutosize from 'react-textarea-autosize'
+import Presentational from './TextArea'
+import { useController, Control } from 'react-hook-form'
 
 type Props = {
-  value: string
+  name: string
+  control: Control<any>
+  defaultValue: string
   readOnly: boolean
-  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
+  placeholder: string
 }
 
-export const TextArea: FC<Props> = ({ value, readOnly, onChange }) => {
+export const TextArea: FC<Props> = ({
+  name,
+  defaultValue,
+  control,
+  readOnly,
+  placeholder,
+}) => {
+  const { field } = useController({
+    name,
+    control,
+    defaultValue,
+  })
   return (
-    <div className="w-2/3">
-      <TextareaAutosize
-        minRows={10}
-        className="h-full w-full rounded-xl px-6 py-6 text-2xl font-medium focus:outline-none"
-        placeholder="ポートフォリオの説明（マークダウン記法を使用できます）"
-        value={value}
-        readOnly={readOnly}
-        onChange={(e) => onChange(e)}
-      />
-    </div>
+    <Presentational {...field} readOnly={readOnly} placeholder={placeholder} />
   )
 }
 export default TextArea

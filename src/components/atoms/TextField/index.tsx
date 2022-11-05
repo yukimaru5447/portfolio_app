@@ -20,7 +20,6 @@ const TextField: FC<Props> = ({
   const { field } = useController({
     name,
     control,
-    rules: { required: true },
     defaultValue,
   })
 
