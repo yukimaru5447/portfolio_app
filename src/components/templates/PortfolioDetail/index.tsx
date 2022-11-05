@@ -67,18 +67,26 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
               : 'ポートフォリオの説明（マークダウン記法を使用できます）'
           }
         />
-        {/* <LinkBar
-          name="URL"
-          value={portfolio ? portfolio?.serviceUrl : serviceUrl}
-          readOnly={!portfolio}
-          onChange={(e) => setServiceUrl(e.target.value)}
+        <LinkBar
+          name="serviceUrl"
+          control={control}
+          defaultValue={
+            portfolio ? portfolio?.serviceUrl : defaultValues.serviceUrl
+          }
+          label="URL"
+          readOnly={!!portfolio}
+          placeholder={!!portfolio ? '' : 'https://'}
         />
         <LinkBar
-          name="Github"
-          value={portfolio ? portfolio?.githubUrl : githubUrl}
-          readOnly={!portfolio}
-          onChange={(e) => setGithubUrl(e.target.value)}
-        /> */}
+          name="githubUrl"
+          control={control}
+          defaultValue={
+            portfolio ? portfolio?.githubUrl : defaultValues.githubUrl
+          }
+          label="Github"
+          readOnly={!!portfolio}
+          placeholder={!!portfolio ? '' : 'https://'}
+        />
       </div>
     </form>
   )
