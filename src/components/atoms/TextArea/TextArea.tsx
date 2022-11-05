@@ -9,16 +9,14 @@ type Props = {
 export const TextArea: FC<Props> = React.forwardRef<HTMLTextAreaElement, Props>(
   function TextArea({ readOnly, placeholder, ...fields }, ref) {
     return (
-      <div className="w-2/3">
-        <TextareaAutosize
-          minRows={10}
-          className="h-full w-full rounded-xl px-6 py-6 text-2xl font-medium focus:outline-none"
-          {...fields}
-          ref={ref}
-          readOnly={readOnly}
-          placeholder={placeholder}
-        />
-      </div>
+      <TextareaAutosize
+        minRows={10}
+        className="h-full w-full rounded-xl px-6 py-6 text-2xl font-medium focus:outline-none"
+        {...fields}
+        ref={ref}
+        readOnly={readOnly}
+        placeholder={placeholder}
+      />
     )
   },
 )

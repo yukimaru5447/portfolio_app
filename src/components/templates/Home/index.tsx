@@ -7,12 +7,8 @@ import { Loading } from '@/components/atoms'
 const Home: FC = () => {
   const { isLoading, error, portfolioGridRows } = useHooks()
 
-  if (isLoading) {
-    return <Loading />
-  }
-  if (error) {
-    return <p>{error.message}</p>
-  }
+  if (isLoading) return <Loading />
+  if (error) <p>{error.message}</p>
 
   return (
     <>

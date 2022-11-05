@@ -21,12 +21,8 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
       id,
     })
 
-  if (isLoading) {
-    return <Loading />
-  }
-  if (error) {
-    return <p>{error.message}</p>
-  }
+  if (isLoading) <Loading />
+  if (error) <p>{error.message}</p>
 
   return (
     <form onSubmit={isNew ? create : undefined}>

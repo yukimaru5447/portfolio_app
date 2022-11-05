@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { FC } from 'react'
+import Loading from '@/components/atoms/Loading'
 
 import useHooks from './hooks'
 
@@ -12,7 +13,7 @@ type Props = {
 export const ImagePreview: FC<Props> = ({ image, ...props }) => {
   const { isLoading, url } = useHooks({ image })
 
-  if (isLoading) <>ローディング中...</>
+  if (isLoading) Loading
   if (!image) return null
 
   return <Image src={url} alt={image.name} {...props} />

@@ -24,7 +24,13 @@ const TextField: FC<Props> = ({
   })
 
   return (
-    <Presentational {...field} readOnly={readOnly} placeholder={placeholder} />
+    <div className="w-2/3">
+      <Presentational
+        {...field}
+        readOnly={readOnly}
+        placeholder={placeholder}
+      />
+    </div>
   )
 }
 
