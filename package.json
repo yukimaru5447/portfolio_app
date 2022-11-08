@@ -6,6 +6,8 @@
     "build": "next build",
     "test": "jest",
     "dev": "next dev",
+    "prisma migrate dev": "npx prisma migrate dev",
+    "prisma studio": "npx prisma studio",
     "postinstall": "prisma generate",
     "lint": "next lint",
     "start": "next start"

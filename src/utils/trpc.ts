@@ -10,20 +10,22 @@ const getBaseUrl = () => {
   return `http://localhost:${process.env.PORT ?? 3000}` // dev SSR should use localhost
 }
 
+const links = [
+  loggerLink({
+    enabled: (opts) =>
+      process.env.NODE_ENV === 'development' ||
+      (opts.direction === 'down' && opts.result instanceof Error),
+  }),
+  httpBatchLink({
+    url: `${getBaseUrl()}/api/trpc`,
+  }),
+]
+
 export const trpc = createTRPCNext<AppRouter>({
   config() {
     return {
       transformer: superjson,
-      links: [
-        loggerLink({
-          enabled: (opts) =>
-            process.env.NODE_ENV === 'development' ||
-            (opts.direction === 'down' && opts.result instanceof Error),
-        }),
-        httpBatchLink({
-          url: `${getBaseUrl()}/api/trpc`,
-        }),
-      ],
+      links,
     }
   },
   ssr: false,
