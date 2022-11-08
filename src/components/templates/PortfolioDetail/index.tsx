@@ -16,10 +16,19 @@ type Props = {
 }
 
 const PortfolioDetail: FC<Props> = ({ id }) => {
-  const { isNew, isLoading, error, control, defaultValues, portfolio, create } =
-    useHooks({
-      id,
-    })
+  const {
+    isNew,
+    isEdit,
+    isLoading,
+    error,
+    control,
+    defaultValues,
+    portfolio,
+    create,
+    checkUnClickable,
+  } = useHooks({
+    id,
+  })
 
   if (isLoading) <Loading />
   if (error) <p>{error.message}</p>
@@ -28,9 +37,17 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
     <form onSubmit={isNew ? create : undefined}>
       <header className="flex justify-between bg-slate-100 md:flex">
         <Logo />
-        <div className="flex justify-between">
-          <Button name="下書き保存" type="button" />
-          <Button name="ポートフォリオを投稿する" type="submit" />
+        <div className="my-4 flex justify-between ">
+          <Button
+            name="下書き保存"
+            type="button"
+            disabled={isEdit || checkUnClickable()}
+          />
+          <Button
+            name="ポートフォリオを投稿する"
+            type="submit"
+            disabled={isEdit || checkUnClickable()}
+          />
         </div>
       </header>
 
@@ -47,8 +64,8 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
           name="title"
           control={control}
           defaultValue={portfolio ? portfolio?.title : defaultValues.title}
-          readOnly={!!portfolio}
-          placeholder={!!portfolio ? '' : 'タイトル（32文字以内）'}
+          readOnly={isEdit}
+          placeholder={isEdit ? '' : 'タイトル（32文字以内）'}
         />
         <TextArea
           name="description"
@@ -56,9 +73,9 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
           defaultValue={
             portfolio ? portfolio?.description : defaultValues.description
           }
-          readOnly={!!portfolio}
+          readOnly={isEdit}
           placeholder={
-            !!portfolio
+            isEdit
               ? ''
               : 'ポートフォリオの説明（マークダウン記法を使用できます）'
           }
@@ -70,8 +87,8 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
             portfolio ? portfolio?.serviceUrl : defaultValues.serviceUrl
           }
           label="URL"
-          readOnly={!!portfolio}
-          placeholder={!!portfolio ? '' : 'https://'}
+          readOnly={isEdit}
+          placeholder={isEdit ? '' : 'https://'}
         />
         <LinkBar
           name="githubUrl"
@@ -80,8 +97,8 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
             portfolio ? portfolio?.githubUrl : defaultValues.githubUrl
           }
           label="Github"
-          readOnly={!!portfolio}
-          placeholder={!!portfolio ? '' : 'https://'}
+          readOnly={isEdit}
+          placeholder={isEdit ? '' : 'https://'}
         />
       </div>
     </form>

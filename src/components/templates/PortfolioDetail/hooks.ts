@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { trpc } from '@/utils/trpc'
@@ -25,6 +25,7 @@ const useHooks = ({ id }: Props) => {
   })
   const { postPortfolioMutation } = useMutatePortfolio()
   const isNew = !portfolio
+  const isEdit = !!portfolio
 
   const defaultValues = {
     title: '',
@@ -33,7 +34,7 @@ const useHooks = ({ id }: Props) => {
     githubUrl: '',
   }
 
-  const { control, setValue, handleSubmit } = useForm<DefaultValues>({
+  const { control, watch, setValue, handleSubmit } = useForm<DefaultValues>({
     resolver: zodResolver(postPortfolioSchema),
     defaultValues,
   })
@@ -48,7 +49,13 @@ const useHooks = ({ id }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [portfolio])
 
-  const create = async (values: DefaultValues) => {
+  const watchFields = watch(['title', 'description', 'serviceUrl', 'githubUrl'])
+  /** 全ての値が入力されていなければtrue */
+  const checkUnClickable = () => watchFields.some((f) => !f.length)
+
+  const create: SubmitHandler<DefaultValues> = async (
+    values: DefaultValues,
+  ) => {
     postPortfolioMutation.mutate({
       ...values,
     })
@@ -57,12 +64,14 @@ const useHooks = ({ id }: Props) => {
 
   return {
     isNew,
+    isEdit,
     isLoading,
     error,
     control,
     defaultValues,
     portfolio,
     create: handleSubmit(create),
+    checkUnClickable,
   }
 }
 
