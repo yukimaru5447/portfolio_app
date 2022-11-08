@@ -7,7 +7,7 @@ type Props = {
 }
 
 const ImageInput: FC<Props> = ({ onChange, ...props }) => {
-  return <input type="file" name="image" onChange={onChange} {...props} />
+  return <input type='file' name='image' onChange={onChange} {...props} />
 }
 
 export default ImageInput

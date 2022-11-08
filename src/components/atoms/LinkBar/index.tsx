@@ -26,8 +26,8 @@ const LinkBar: FC<Props> = ({
     defaultValue,
   })
   return (
-    <div className="flex w-2/3">
-      <div className="text-ms flex h-12 w-28 items-center justify-center rounded-l-lg  bg-slate-300 text-center font-semibold text-white">
+    <div className='flex w-2/3'>
+      <div className='text-ms flex h-12 w-28 items-center justify-center rounded-l-lg  bg-slate-300 text-center font-semibold text-white'>
         {label}
       </div>
       <Presentational

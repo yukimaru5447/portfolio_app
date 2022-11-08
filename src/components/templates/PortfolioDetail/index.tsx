@@ -35,23 +35,23 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
 
   return (
     <form onSubmit={isNew ? create : undefined}>
-      <header className="flex justify-between bg-slate-100 md:flex">
+      <header className='flex justify-between bg-slate-100 md:flex'>
         <Logo />
-        <div className="my-4 flex justify-between ">
+        <div className='my-4 flex justify-between '>
           <Button
-            name="下書き保存"
-            type="button"
+            name='下書き保存'
+            type='button'
             disabled={isEdit || checkUnClickable()}
           />
           <Button
-            name="ポートフォリオを投稿する"
-            type="submit"
+            name='ポートフォリオを投稿する'
+            type='submit'
             disabled={isEdit || checkUnClickable()}
           />
         </div>
       </header>
 
-      <div className="flex flex-col items-center space-y-4 bg-slate-100 pt-10 pb-20">
+      <div className='flex flex-col items-center space-y-4 bg-slate-100 pt-10 pb-20'>
         {/* portfolio.imageが実装できたら変更 */}
         <ImageField
           imageUrl={
@@ -61,14 +61,14 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
           }
         />
         <TextField
-          name="title"
+          name='title'
           control={control}
           defaultValue={portfolio ? portfolio?.title : defaultValues.title}
           readOnly={isEdit}
           placeholder={isEdit ? '' : 'タイトル（32文字以内）'}
         />
         <TextArea
-          name="description"
+          name='description'
           control={control}
           defaultValue={
             portfolio ? portfolio?.description : defaultValues.description
@@ -81,22 +81,22 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
           }
         />
         <LinkBar
-          name="serviceUrl"
+          name='serviceUrl'
           control={control}
           defaultValue={
             portfolio ? portfolio?.serviceUrl : defaultValues.serviceUrl
           }
-          label="URL"
+          label='URL'
           readOnly={isEdit}
           placeholder={isEdit ? '' : 'https://'}
         />
         <LinkBar
-          name="githubUrl"
+          name='githubUrl'
           control={control}
           defaultValue={
             portfolio ? portfolio?.githubUrl : defaultValues.githubUrl
           }
-          label="Github"
+          label='Github'
           readOnly={isEdit}
           placeholder={isEdit ? '' : 'https://'}
         />

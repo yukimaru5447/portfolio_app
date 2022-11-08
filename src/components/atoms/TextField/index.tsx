@@ -25,7 +25,7 @@ const TextField: FC<Props> = ({
   })
 
   return (
-    <div className="w-2/3">
+    <div className='w-2/3'>
       <Presentational
         {...field}
         readOnly={readOnly}

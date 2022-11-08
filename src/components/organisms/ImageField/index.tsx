@@ -17,24 +17,24 @@ const ImageField: FC<Props> = ({ imageUrl }) => {
       {imageUrl ? (
         <Image src={imageUrl} height={328} width={640} alt={imageUrl} />
       ) : (
-        <div className="relative h-60 w-2/3 rounded-xl bg-slate-300 pt-6">
+        <div className='relative h-60 w-2/3 rounded-xl bg-slate-300 pt-6'>
           <ImageInput
-            className="absolute h-full w-full opacity-0"
+            className='absolute h-full w-full opacity-0'
             onChange={handleSetImage}
             disabled={portfolioImage ? true : false}
           />
-          <div className="just flex items-center justify-center">
+          <div className='just flex items-center justify-center'>
             {portfolioImage ? (
               <div>
                 <button
-                  type="button"
-                  aria-label="Close"
+                  type='button'
+                  aria-label='Close'
                   onClick={handleResetImage}
                 />
                 <ImagePreview image={portfolioImage} height={200} width={200} />
               </div>
             ) : (
-              <PhotoIcon className="absolute top-1/2 right-1/2 h-6 w-6" />
+              <PhotoIcon className='absolute top-1/2 right-1/2 h-6 w-6' />
             )}
           </div>
         </div>
