@@ -17,6 +17,7 @@ const SwitchButton: FC<Props> = ({ value, onChange, disabled }) => {
       disabled={disabled}
       className={clsx([
         value ? 'bg-blue-400' : 'bg-gray-400',
+        disabled ? 'opacity-40' : '',
         'relative inline-flex h-6 w-11 items-center rounded-full',
       ])}
     >
