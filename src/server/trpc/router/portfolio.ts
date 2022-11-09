@@ -12,6 +12,7 @@ const selectPortfolio = Prisma.validator<Prisma.PortfolioSelect>()({
   description: true,
   serviceUrl: true,
   githubUrl: true,
+  isPublished: true,
 })
 
 export const portfolioRouter = t.router({
@@ -31,6 +32,9 @@ export const portfolioRouter = t.router({
     }),
   getAllPortfolios: t.procedure.query(({ ctx }) => {
     return ctx.prisma.portfolio.findMany({
+      where: {
+        isPublished: true,
+      },
       orderBy: {
         createdAt: 'desc',
       },

@@ -7,6 +7,7 @@ describe('postPortfolioSchema', () => {
       description: '説明1',
       serviceUrl: 'https://test1.com',
       githubUrl: 'https://test1.com',
+      isPublished: true,
     }
     expect(postPortfolioSchema.parse(protfolio)).toEqual(protfolio)
   })

@@ -9,6 +9,7 @@ export const postPortfolioSchema = z.object({
   description: z.string().min(1),
   serviceUrl: z.string().url({ message: '無効なURLです' }).max(100).min(1),
   githubUrl: z.string().url({ message: '無効なURLです' }).max(100).min(1),
+  isPublished: z.boolean(),
 })
 
 export type PostPortfolioInput = z.infer<typeof postPortfolioSchema>

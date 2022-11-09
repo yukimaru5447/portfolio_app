@@ -32,6 +32,7 @@ const useHooks = ({ id }: Props) => {
     description: '',
     serviceUrl: '',
     githubUrl: '',
+    isPublished: true,
   }
 
   const { control, watch, setValue, handleSubmit } = useForm<DefaultValues>({
@@ -46,10 +47,12 @@ const useHooks = ({ id }: Props) => {
     setValue('description', portfolio.description)
     setValue('serviceUrl', portfolio.serviceUrl)
     setValue('githubUrl', portfolio.githubUrl)
+    setValue('isPublished', portfolio.isPublished)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [portfolio])
 
   const watchFields = watch(['title', 'description', 'serviceUrl', 'githubUrl'])
+  const watchIsPublished = watch('isPublished')
   /** 全ての値が入力されていなければtrue */
   const checkUnClickable = () => watchFields.some((f) => !f.length)
 
@@ -69,6 +72,7 @@ const useHooks = ({ id }: Props) => {
     error,
     control,
     defaultValues,
+    watchIsPublished,
     portfolio,
     create: handleSubmit(create),
     checkUnClickable,

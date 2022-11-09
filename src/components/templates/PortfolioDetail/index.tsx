@@ -8,6 +8,7 @@ import {
   Button,
   Logo,
   Loading,
+  SwitchGroup,
 } from '@/components/atoms'
 import useHooks from './hooks'
 
@@ -23,6 +24,7 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
     error,
     control,
     defaultValues,
+    watchIsPublished,
     portfolio,
     create,
     checkUnClickable,
@@ -33,21 +35,32 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
   if (isLoading) <Loading />
   if (error) <p>{error.message}</p>
 
+  console.log(watchIsPublished)
+
   return (
     <form onSubmit={isNew ? create : undefined}>
       <header className='flex justify-between bg-slate-100 md:flex'>
         <Logo />
-        <div className='my-4 flex justify-between '>
-          <Button
-            name='下書き保存'
-            type='button'
-            disabled={isEdit || checkUnClickable()}
+        <div className='my-4 flex justify-between'>
+          <SwitchGroup
+            name='isPublished'
+            label='公開する'
+            control={control}
+            defaultValue={defaultValues.isPublished}
           />
-          <Button
-            name='ポートフォリオを投稿する'
-            type='submit'
-            disabled={isEdit || checkUnClickable()}
-          />
+          {watchIsPublished ? (
+            <Button
+              name='ポートフォリオを投稿する'
+              type='submit'
+              disabled={isEdit || checkUnClickable()}
+            />
+          ) : (
+            <Button
+              name='下書き保存'
+              type='button'
+              disabled={isEdit || checkUnClickable()}
+            />
+          )}
         </div>
       </header>
 
