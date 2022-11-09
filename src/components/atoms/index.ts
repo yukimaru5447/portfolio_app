@@ -1,5 +1,5 @@
 export { default as Button } from './Button'
-export { default as SwitchGroup } from './SwitchGroup'
+export { default as SwitchButton } from './SwitchButton'
 export { default as ImageInput } from './ImageInput'
 export { default as ImagePreview } from './ImagePreview'
 export { default as LinkBar } from './LinkBar'

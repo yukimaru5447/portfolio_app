@@ -14,8 +14,8 @@ type Props = {
 type DefaultValues = PostPortfolioInput
 
 const useHooks = ({ id }: Props) => {
-  const portfolioId = id ?? ''
   const router = useRouter()
+  const portfolioId = id ?? ''
   const {
     data: portfolio,
     isLoading,
@@ -32,7 +32,7 @@ const useHooks = ({ id }: Props) => {
     description: '',
     serviceUrl: '',
     githubUrl: '',
-    isPublished: true,
+    isPublished: false,
   }
 
   const { control, watch, setValue, handleSubmit } = useForm<DefaultValues>({
@@ -56,9 +56,7 @@ const useHooks = ({ id }: Props) => {
   /** 全ての値が入力されていなければtrue */
   const checkUnClickable = () => watchFields.some((f) => !f.length)
 
-  const create: SubmitHandler<DefaultValues> = async (
-    values: DefaultValues,
-  ) => {
+  const create: SubmitHandler<DefaultValues> = (values: DefaultValues) => {
     postPortfolioMutation.mutate({
       ...values,
     })

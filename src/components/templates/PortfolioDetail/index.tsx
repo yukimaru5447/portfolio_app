@@ -1,6 +1,5 @@
 import { FC } from 'react'
 
-import ImageField from '@/components/organisms/ImageField'
 import {
   TextField,
   TextArea,
@@ -8,8 +7,9 @@ import {
   Button,
   Logo,
   Loading,
-  SwitchGroup,
 } from '@/components/atoms'
+import { ImageField, SwitchGroup } from '@/components/organisms'
+
 import useHooks from './hooks'
 
 type Props = {
@@ -35,36 +35,37 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
   if (isLoading) <Loading />
   if (error) <p>{error.message}</p>
 
-  console.log(watchIsPublished)
-
   return (
     <form onSubmit={isNew ? create : undefined}>
-      <header className='flex justify-between bg-slate-100 md:flex'>
+      <header className='fixed z-10 flex w-screen justify-between border-b-2 border-gray-200 bg-slate-100 md:flex'>
         <Logo />
-        <div className='my-4 flex justify-between'>
+        <div className='my-4 flex'>
           <SwitchGroup
             name='isPublished'
-            label='公開する'
+            label={isEdit ? '公開中' : '公開する'}
             control={control}
             defaultValue={defaultValues.isPublished}
+            disabled={isEdit}
           />
-          {watchIsPublished ? (
-            <Button
-              name='ポートフォリオを投稿する'
-              type='submit'
-              disabled={isEdit || checkUnClickable()}
-            />
-          ) : (
-            <Button
-              name='下書き保存'
-              type='button'
-              disabled={isEdit || checkUnClickable()}
-            />
-          )}
+          <div className='ml-4'>
+            {watchIsPublished ? (
+              <Button
+                name='投稿する'
+                type='submit'
+                disabled={isEdit || checkUnClickable()}
+              />
+            ) : (
+              <Button
+                name='下書き保存'
+                type='submit'
+                disabled={isEdit || checkUnClickable()}
+              />
+            )}
+          </div>
         </div>
       </header>
 
-      <div className='flex flex-col items-center space-y-4 bg-slate-100 pt-10 pb-20'>
+      <div className='flex flex-col items-center space-y-4 bg-slate-100 py-24'>
         {/* portfolio.imageが実装できたら変更 */}
         <ImageField
           imageUrl={
