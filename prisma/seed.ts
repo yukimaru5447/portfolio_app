@@ -3,6 +3,7 @@ import { PrismaClient, Prisma } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
+/** please execute 'yarn seed' on Command Line if you have a user account  */
 async function main() {
   const users = await prisma.user.findMany()
   const dummyPublishedPortfolios: Prisma.PortfolioCreateManyArgs['data'] = []
@@ -31,5 +32,7 @@ main()
     process.exit(1)
   })
   .finally(async () => {
+    console.log('ユーザーに紐づく投稿を作成しました🚀')
+
     await prisma.$disconnect()
   })
