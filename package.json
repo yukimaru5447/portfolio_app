@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": " yarn ts-check && next build",
     "test": "jest",
     "dev": "next dev",
+    "ts-check": "tsc --noemit",
+    "seed": "ts-node --compiler-options '{\"module\":\"commonjs\"}' prisma/seed.ts",
     "prisma migrate dev": "npx prisma migrate dev",
     "prisma studio": "npx prisma studio",
     "postinstall": "prisma generate",
@@ -34,6 +36,7 @@
     "react-i18next": "^12.0.0",
     "react-textarea-autosize": "^8.3.4",
     "superjson": "1.9.1",
+    "ts-node": "^10.9.1",
     "zod": "^3.18.0"
   },
   "devDependencies": {
