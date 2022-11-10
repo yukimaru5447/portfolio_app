@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Switch } from '@headlessui/react'
 import { Control, useController } from 'react-hook-form'
 
-import SwitchButton from '../../atoms/SwitchButton'
+import { SwitchButton } from '@/components/atoms'
 
 type Props = {
   name: string

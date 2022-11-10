@@ -5,10 +5,10 @@ import {
   ChevronDownIcon,
   UserCircleIcon,
 } from '@heroicons/react/24/solid'
-import Link from 'next/link'
 import { Menu, Transition } from '@headlessui/react'
-import { Logo } from '../atoms'
+import { Logo } from '@/components/atoms'
 import { useTranslation } from 'react-i18next'
+import { MenuGroup } from '@/components/organisms'
 
 export const Header: FC = () => {
   const { t } = useTranslation(['common', 'home'])
@@ -17,12 +17,7 @@ export const Header: FC = () => {
       <Logo />
 
       <div className='mr-4 flex justify-between space-x-4 p-4'>
-        <Link
-          href={'/portfolio/new'}
-          className='inline-flex justify-center rounded-md bg-slate-500 px-4 py-2 text-sm font-medium text-white hover:bg-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white'
-        >
-          {t('common:Post')}
-        </Link>
+        <MenuGroup />
 
         <Menu as='div' className='relative inline-block text-left'>
           <Menu.Button className='inline-flex w-full justify-center rounded-md bg-slate-500 px-4 py-2 text-sm font-medium text-white hover:bg-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white'>
