@@ -7,9 +7,10 @@ const prisma = new PrismaClient()
 async function main() {
   const users = await prisma.user.findMany()
   const dummyPublishedPortfolios: Prisma.PortfolioCreateManyArgs['data'] = []
+  const numberOfPortfolios = [1, 2, 3, 4]
 
   for (const user of users) {
-    for (const num of [1, 2, 3, 4]) {
+    for (const num of numberOfPortfolios) {
       dummyPublishedPortfolios.push({
         title: `ポートフォリオ1${num}`,
         description: `${num}ヶ月で作りました。`,
@@ -24,6 +25,8 @@ async function main() {
   await prisma.portfolio.createMany({
     data: dummyPublishedPortfolios,
   })
+
+  console.log(`ユーザーに紐づく${numberOfPortfolios}個の投稿を作成しました🚀`)
 }
 
 main()
@@ -32,7 +35,5 @@ main()
     process.exit(1)
   })
   .finally(async () => {
-    console.log('ユーザーに紐づく投稿を作成しました🚀')
-
     await prisma.$disconnect()
   })
