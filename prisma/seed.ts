@@ -26,7 +26,7 @@ async function main() {
     data: dummyPublishedPortfolios,
   })
 
-  console.log(`ユーザーに紐づく${numberOfPortfolios}個の投稿を作成しました🚀`)
+  console.log(`ユーザーに紐づく${numberOfPortfolios}個の投稿を作成しました🚀🚀`)
 }
 
 main()
