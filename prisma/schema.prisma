@@ -116,3 +116,12 @@ model Address {
     // 建物名/部屋番号
     address2 String?
 }
+
+model Contact {
+    id String @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    phoneNumber Int?
+    mail String?
+}
