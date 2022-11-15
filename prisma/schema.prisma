@@ -63,6 +63,7 @@ model User {
     accounts      Account[]
     sessions      Session[]
     portfolios    Portfolio[]
+    resumes Resume[]
 }
 
 model VerificationToken {
@@ -71,4 +72,30 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+enum GENDER {
+  MALE
+  FEMALE
+}
+
+model Resume {
+    id String @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    firstName String
+    lastName String
+    firstNameKana String?
+    lastNameKana String?
+    birthDay DateTime?
+    image String?
+    gender GENDER
+    // 志望動機、特技、好きな学科、アピールポイントなど
+    appealNote String?
+    // 本人希望記入欄(特に 給料、職種、勤務時間、勤務地、その他など)
+    desiredNote String?
+
+    user         User     @relation(fields: [userId], references: [id])
+    userId String
 }
