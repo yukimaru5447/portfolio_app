@@ -99,3 +99,20 @@ model Resume {
     user         User     @relation(fields: [userId], references: [id])
     userId String
 }
+
+model Address {
+    id String @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    // 郵便番号
+    zipCode String
+    // 都道府県
+    State String
+    // 市区町村
+    City String
+    // 町名
+    address1 String
+    // 建物名/部屋番号
+    address2 String?
+}
