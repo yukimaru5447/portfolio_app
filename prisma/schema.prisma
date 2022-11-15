@@ -125,3 +125,39 @@ model Contact {
     phoneNumber Int?
     mail String?
 }
+
+model Experience {
+    id String @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    title String
+    // 職歴の始まり
+    startedAt DateTime
+    // 職歴の終わり
+    endedAt DateTime
+}
+
+model Education {
+    id String @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    title String
+    // 学歴の始まり
+    startedAt DateTime
+    // 学歴の終わり
+    endedAt DateTime
+}
+
+model Certification {
+    id String @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    title String
+    // 資格の始まり
+    startedAt DateTime
+    // 資格の終わり
+    endedAt DateTime
+}
