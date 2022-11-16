@@ -2,73 +2,206 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "postgresql"
-    // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
-    // Further reading: 
-    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
-    url      = env("DATABASE_URL")
+  provider = "postgresql"
+  // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
+  // Further reading: 
+  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
+  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
+  url      = env("DATABASE_URL")
 }
 
 model Portfolio {
-    id  String @unique @default(cuid())
-    title String
-    description String
-    serviceUrl String
-    githubUrl String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    isPublished Boolean @default(false)
-    user   User   @relation(fields: [userId], references: [id])
-    userId String
+  id          String   @unique @default(cuid())
+  title       String
+  description String
+  serviceUrl  String
+  githubUrl   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  isPublished Boolean  @default(false)
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
 }
 
 // Necessary for Next auth
 model Account {
-    id                String  @id @default(cuid())
-    userId            String
-    type              String
-    provider          String
-    providerAccountId String
-    refresh_token     String? // @db.Text
-    access_token      String? // @db.Text
-    expires_at        Int?
-    token_type        String?
-    scope             String?
-    id_token          String? // @db.Text
-    session_state     String?
-    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? // @db.Text
+  access_token      String? // @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? // @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    @@unique([provider, providerAccountId])
+  @@unique([provider, providerAccountId])
 }
 
 model Session {
-    id           String   @id @default(cuid())
-    sessionToken String   @unique
-    userId       String
-    expires      DateTime
-    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-    id            String    @id @default(cuid())
-    name          String?
-    email         String?   @unique
-    emailVerified DateTime?
-    image         String?
-    accounts      Account[]
-    sessions      Session[]
-    portfolios    Portfolio[]
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+
+  accounts       Account[]
+  sessions       Session[]
+  portfolios     Portfolio[]
+  resumes        Resume[]
+  addresses      Address[]
+  contacts       Contact[]
+  experiences    Experience[]
+  educations     Education[]
+  certifications Certification[]
 }
 
 model VerificationToken {
-    identifier String
-    token      String   @unique
-    expires    DateTime
+  identifier String
+  token      String   @unique
+  expires    DateTime
 
-    @@unique([identifier, token])
+  @@unique([identifier, token])
+}
+
+enum GENDER {
+  MALE
+  FEMALE
+}
+
+model Resume {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  firstName     String
+  lastName      String
+  firstNameKana String?
+  lastNameKana  String?
+  birthDay      DateTime?
+  image         String?
+  gender        GENDER
+  // 志望動機、特技、好きな学科、アピールポイントなど
+  appealNote    String?
+  // 本人希望記入欄(特に 給料、職種、勤務時間、勤務地、その他など)
+  desiredNote   String?
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  addresses      Address[]
+  contacts       Contact[]
+  experiences    Experience[]
+  educations     Education[]
+  certifications Certification[]
+}
+
+model Address {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // 郵便番号
+  zipCode  String
+  // 都道府県
+  State    String
+  // 市区町村
+  City     String
+  // 町名
+  address1 String
+  // 建物名/部屋番号
+  address2 String?
+
+  user     User   @relation(fields: [userId], references: [id])
+  userId   String
+  resume   Resume @relation(fields: [resumeId], references: [id])
+  resumeId String
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  phoneNumber Int?
+  mail        String?
+
+  user     User   @relation(fields: [userId], references: [id])
+  userId   String
+  resume   Resume @relation(fields: [resumeId], references: [id])
+  resumeId String
+}
+
+model Experience {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // 会社名
+  name        String
+  // 仕事の内容
+  description String
+  // 職歴の始まり
+  startedAt   DateTime
+  // 職歴の終わり
+  endedAt     DateTime
+
+  user     User   @relation(fields: [userId], references: [id])
+  userId   String
+  resume   Resume @relation(fields: [resumeId], references: [id])
+  resumeId String
+}
+
+model Education {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // 学校
+  name        String
+  // 勉強の内容
+  description String
+  // 学歴の始まり
+  startedAt   DateTime
+  // 学歴の終わり
+  endedAt     DateTime
+
+  user     User   @relation(fields: [userId], references: [id])
+  userId   String
+  resume   Resume @relation(fields: [resumeId], references: [id])
+  resumeId String
+}
+
+model Certification {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // 資格名
+  name      String
+  // 資格の始まり
+  startedAt DateTime
+  // 資格の終わり
+  endedAt   DateTime
+
+  user     User   @relation(fields: [userId], references: [id])
+  userId   String
+  resume   Resume @relation(fields: [resumeId], references: [id])
+  resumeId String
 }
