@@ -1,11 +1,38 @@
 // https://github.com/TypeStrong/ts-node/issues/1062#issuecomment-1289772979
-import { PrismaClient, Prisma } from '@prisma/client'
+import { PrismaClient, Prisma, User } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
 /** please execute 'yarn seed' on Command Line if you have a user account  */
 async function main() {
   const users = await prisma.user.findMany()
+  let newUser: User
+
+  // ユーザーが存在しなければ実行
+  if (!users.length) {
+    newUser = await prisma.user.create({
+      data: {
+        name: '山田太郎',
+        email: 'taro@yama.com',
+      },
+    })
+
+    await prisma.portfolio.create({
+      data: {
+        title: `${newUser.name}のポートフォリオ`,
+        description: `${newUser.name}が3ヶ月で作りました。`,
+        serviceUrl: `https://portfolio.com`,
+        githubUrl: `https://github.com/portfolio`,
+        userId: newUser.id,
+        isPublished: true,
+      },
+    })
+    console.log(
+      `ユーザーが存在しなかったため、ユーザーを新たに作成してポートフォリオを1つ作成しました`,
+    )
+    return
+  }
+
   const dummyPublishedPortfolios: Prisma.PortfolioCreateManyArgs['data'] = []
   const numberOfPortfolios = [1, 2, 3, 4]
 
