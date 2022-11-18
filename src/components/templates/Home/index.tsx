@@ -1,4 +1,8 @@
 import { FC } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import { Navigation } from 'swiper'
 
 import { PortfolioCard } from '@/components/organisms'
 import useHooks from './hooks'
@@ -22,10 +26,19 @@ const Home: FC = () => {
               {grid.label}
             </div>
             <div className='flex w-full justify-center'>
-              {grid.row &&
-                grid.row.map(({ id, title }) => (
-                  <PortfolioCard key={id} id={id} title={title} />
-                ))}
+              <Swiper
+                spaceBetween={315}
+                slidesPerView={3}
+                navigation={true}
+                modules={[Navigation]}
+              >
+                {grid.rows &&
+                  grid.rows.map(({ id, title }) => (
+                    <SwiperSlide key={id}>
+                      <PortfolioCard id={id} title={title} />
+                    </SwiperSlide>
+                  ))}
+              </Swiper>
             </div>
           </div>
         ))}

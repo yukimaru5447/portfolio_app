@@ -10,7 +10,7 @@ const HomePage: NextPage = () => {
       <Header />
       <SearchBlock />
 
-      <main className="mt-5 mb-5 flex flex-col items-center justify-center space-y-4">
+      <main className='mt-5 mb-5 flex flex-col items-center justify-center space-y-4'>
         <Home />
       </main>
 

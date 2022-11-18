@@ -13,15 +13,15 @@ const useHooks = () => {
   const portfolioGridRows = [
     {
       label: t('home:New'),
-      row: portfolios,
+      rows: portfolios,
     },
     {
       label: t('home:Attention'),
-      row: portfolios,
+      rows: portfolios,
     },
     {
       label: t('home:Recommendation'),
-      row: portfolios,
+      rows: portfolios,
     },
   ]
   return { portfolios, isLoading, error, portfolioGridRows }
