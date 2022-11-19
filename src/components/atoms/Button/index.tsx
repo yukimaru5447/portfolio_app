@@ -16,7 +16,7 @@ const Button: FC<Props> = ({ name, type, disabled }) => {
     ? clsx([defaultStyle, 'bg-slate-400'])
     : clsx([
         defaultStyle,
-        'bg-slate-500 hover:bg-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white',
+        'bg-indigo-500 hover:bg-indigo-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white',
       ])
 
   return (

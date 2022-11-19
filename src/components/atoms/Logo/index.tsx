@@ -5,7 +5,7 @@ const Logo: FC = () => {
   return (
     <Link
       href={'/'}
-      className='ml-4 p-4 text-2xl font-bold text-slate-500 hover:text-slate-700'
+      className='ml-4 p-4 text-2xl font-bold text-indigo-500 hover:text-indigo-700'
     >
       PortfolioApp
     </Link>

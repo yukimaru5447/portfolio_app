@@ -4,7 +4,7 @@ import React, { FC } from 'react'
 export const Auth: FC = () => {
   return (
     <div className='flex w-2/6 flex-col items-center justify-center space-y-6 rounded bg-white py-10 shadow'>
-      <h1 className='text-center text-2xl font-bold text-slate-600'>
+      <h1 className='text-center text-2xl font-bold text-indigo-600'>
         Welcome to PortfolioApp
       </h1>
       <button
