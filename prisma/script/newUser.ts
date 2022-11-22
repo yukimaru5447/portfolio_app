@@ -26,6 +26,17 @@ export const createNewUser = async (prisma: PrismaClient) => {
     },
   })
 
+  await prisma.profile.create({
+    data: {
+      firstName: '山田',
+      lastName: '太郎',
+      firstNameKana: 'やまだ',
+      lastNameKana: 'たろう',
+      description: '初めまして山田太郎です',
+      userId: newUser.id,
+    },
+  })
+
   await prisma.resume.create({
     data: {
       firstName: '山田',

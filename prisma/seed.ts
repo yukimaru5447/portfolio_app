@@ -7,13 +7,12 @@ const prisma = new PrismaClient()
 
 /** please execute 'yarn seed <newUser or newPortfolio>' on Command Line if you have a user account  */
 async function main() {
-  console.log(process.argv[2])
-
   if (process.argv[2] === 'newUser') {
     await createNewUser(prisma)
     console.log(
-      `ユーザーが存在しなかったため、ユーザーを新たに作成してポートフォリオを1つ作成しました`,
+      `ユーザーが存在しなかったため、ユーザーを新たに作成してポートフォリオを1つ作成しました🚀🚀`,
     )
+    return
   }
 
   if (process.argv[2] === 'newPortfolio') {
@@ -24,7 +23,10 @@ async function main() {
     console.log(
       `ユーザーに紐づく${numberOfPortfolios}個の投稿を作成しました🚀🚀`,
     )
+    return
   }
+
+  console.log('何も作成されませんでした。引数を指定してください')
 }
 
 main()

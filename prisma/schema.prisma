@@ -61,6 +61,8 @@ model User {
   emailVerified DateTime?
   image         String?
 
+  profile Profile?
+
   accounts       Account[]
   sessions       Session[]
   portfolios     Portfolio[]
@@ -85,6 +87,26 @@ enum GENDER {
   FEMALE
 }
 
+model Profile {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  firstName     String
+  lastName      String
+  firstNameKana String?
+  lastNameKana  String?
+  description   String?
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+  resume   Resume?   @relation(fields: [resumeId], references: [id])
+  resumeId String? @unique
+
+  experiences    Experience[]
+  educations     Education[]
+}
+
 model Resume {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
@@ -104,6 +126,8 @@ model Resume {
 
   user   User   @relation(fields: [userId], references: [id])
   userId String
+
+  profile Profile?
 
   addresses      Address[]
   contacts       Contact[]
@@ -166,6 +190,8 @@ model Experience {
   userId   String
   resume   Resume @relation(fields: [resumeId], references: [id])
   resumeId String
+  profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId String?
 }
 
 model Education {
@@ -186,6 +212,8 @@ model Education {
   userId   String
   resume   Resume @relation(fields: [resumeId], references: [id])
   resumeId String
+  profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId String?
 }
 
 model Certification {
