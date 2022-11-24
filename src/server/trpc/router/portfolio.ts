@@ -42,10 +42,10 @@ export const portfolioRouter = t.router({
   }),
   getPortfolio: t.procedure
     .input(getPortfolioSchema)
-    .query(({ ctx, input }) => {
+    .query(({ ctx, input: { id } }) => {
       return ctx.prisma.portfolio.findFirst({
         where: {
-          id: input.id,
+          id,
         },
         select: selectPortfolio,
       })

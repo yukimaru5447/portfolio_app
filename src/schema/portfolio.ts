@@ -11,10 +11,7 @@ export const postPortfolioSchema = z.object({
   githubUrl: z.string().url({ message: '無効なURLです' }).max(100).min(1),
   isPublished: z.boolean(),
 })
-
 export type PostPortfolioInput = z.infer<typeof postPortfolioSchema>
 
 // server
-export const getPortfolioSchema = z.object({
-  id: z.string(),
-})
+export const getPortfolioSchema = z.object({ id: z.string() })

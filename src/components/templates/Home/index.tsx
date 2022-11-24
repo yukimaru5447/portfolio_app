@@ -33,11 +33,13 @@ const Home: FC = () => {
                 modules={[Navigation]}
               >
                 {grid.rows &&
-                  grid.rows.map(({ id, title }) => (
-                    <SwiperSlide key={id}>
-                      <PortfolioCard id={id} title={title} />
-                    </SwiperSlide>
-                  ))}
+                  grid.rows.map(
+                    ({ id, title }: { id: string; title: string }) => (
+                      <SwiperSlide key={id}>
+                        <PortfolioCard id={id} title={title} />
+                      </SwiperSlide>
+                    ),
+                  )}
               </Swiper>
             </div>
           </div>

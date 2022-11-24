@@ -13,14 +13,14 @@ export const Header: FC = () => {
   const itemsAboutPortfolio = [
     {
       name: t('portfolio:AddPortfolio'),
-      onClick: () => router.push('/portfolio/new'),
+      onClick: () => router.push('/portfolios/new'),
       icon: (
         <PencilIcon className='h-5 w-5 text-slate-400' aria-hidden='true' />
       ),
     },
     {
       name: t('portfolio:EditDraft'),
-      onClick: () => router.push('/portfolio/new'),
+      onClick: () => router.push('/portfolios/new'),
       icon: (
         <PencilSquareIcon
           className='h-5 w-5 text-slate-400'
@@ -32,7 +32,7 @@ export const Header: FC = () => {
   const itemsAboutMenu = [
     {
       name: t('common:Profile'),
-      onClick: () => console.log('プロフィールへ遷移'),
+      onClick: () => router.push(`/profile`),
       icon: (
         <PencilIcon className='h-5 w-5 text-slate-400' aria-hidden='true' />
       ),
