@@ -1,14 +1,7 @@
 import { FC } from 'react'
 
-import {
-  TextField,
-  TextArea,
-  LinkBar,
-  Button,
-  Logo,
-  Loading,
-} from '@/components/atoms'
-import { ImageField, SwitchGroup } from '@/components/organisms'
+import { TextField, TextArea, LinkBar, Logo, Loading } from '@/components/atoms'
+import { ImageField, SubmitButton } from '@/components/organisms'
 
 import useHooks from './hooks'
 
@@ -37,33 +30,16 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
 
   return (
     <form onSubmit={isNew ? create : undefined}>
-      {/* pagesでheaderを切り替えられるようにしたい */}
-      <header className='fixed z-10 flex flex w-screen justify-between border-b-2 border-gray-200 bg-slate-100'>
+      <header className='fixed z-10 flex flex w-screen justify-between border-b-2 border-gray-200 bg-slate-100 px-32'>
         <Logo />
-        <div className='my-4 flex'>
-          <SwitchGroup
-            name='isPublished'
-            label={isEdit ? '公開中' : '公開する'}
-            control={control}
-            defaultValue={defaultValues.isPublished}
-            disabled={isEdit}
-          />
-          <div className='ml-4'>
-            {watchIsPublished ? (
-              <Button
-                name='投稿する'
-                type='submit'
-                disabled={isEdit || checkUnClickable()}
-              />
-            ) : (
-              <Button
-                name='下書き保存'
-                type='submit'
-                disabled={isEdit || checkUnClickable()}
-              />
-            )}
-          </div>
-        </div>
+
+        <SubmitButton
+          isEdit={isEdit}
+          watchIsPublished={watchIsPublished}
+          control={control}
+          defaultValues={defaultValues}
+          checkUnClickable={checkUnClickable}
+        />
       </header>
 
       <div className='flex flex-col items-center space-y-4 bg-slate-100 py-24'>

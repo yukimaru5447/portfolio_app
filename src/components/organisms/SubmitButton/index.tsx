@@ -1,12 +1,29 @@
 import { FC } from 'react'
 
-const SubmitButton: FC = () => {
-  // localStorageに保存?
-  // それともuseFormを利用できるか
+import { Button } from '@/components/atoms'
+import SwitchGroup from '@/components/organisms/SwitchGroup'
+import { Control } from 'react-hook-form'
+
+type Props = {
+  isEdit: boolean
+  watchIsPublished: boolean
+  control: Control<any>
+  defaultValues: {
+    isPublished: boolean
+  }
+  checkUnClickable: () => boolean
+}
+
+const SubmitButton: FC<Props> = ({
+  isEdit,
+  control,
+  defaultValues,
+  watchIsPublished,
+  checkUnClickable,
+}) => {
   return (
     <div className='my-4 flex'>
-      送信ボタン
-      {/* <SwitchGroup
+      <SwitchGroup
         name='isPublished'
         label={isEdit ? '公開中' : '公開する'}
         control={control}
@@ -27,7 +44,7 @@ const SubmitButton: FC = () => {
             disabled={isEdit || checkUnClickable()}
           />
         )}
-      </div> */}
+      </div>
     </div>
   )
 }
