@@ -1,4 +1,4 @@
-import { ComponentProps, Fragment } from 'react'
+import { ComponentProps, FC, Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 
@@ -11,7 +11,7 @@ type Props = {
   menuName: string
 }
 
-const MenuGroup = ({ items, menuName }: Props) => {
+const MenuGroup: FC<Props> = ({ items, menuName }) => {
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <Menu.Button className='inline-flex w-full justify-center rounded-md bg-indigo-500 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white'>
