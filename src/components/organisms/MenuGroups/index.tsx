@@ -9,7 +9,7 @@ import {
 import { MenuGroup } from '@/components/organisms'
 import useHooks from './hooks'
 
-const MenuGroupHome: FC = () => {
+const MenuGroups: FC = () => {
   const { t, onTransitionPage } = useHooks()
   const itemsAboutPortfolio = [
     {
@@ -58,4 +58,4 @@ const MenuGroupHome: FC = () => {
   )
 }
 
-export default MenuGroupHome
+export default MenuGroups
