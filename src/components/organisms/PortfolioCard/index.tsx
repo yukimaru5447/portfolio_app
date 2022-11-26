@@ -11,7 +11,7 @@ const PortfolioCard: FC<Props> = ({ id, title }) => {
   return (
     <div className='m-4 h-72 w-96'>
       <Link
-        href={`portfolio/${id}`}
+        href={`portfolios/${id}`}
         className='block overflow-hidden rounded-lg border border-gray-100 shadow-sm'
       >
         <Image

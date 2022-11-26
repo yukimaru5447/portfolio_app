@@ -1,17 +1,17 @@
 import type { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 
-import { Layout, Auth } from '@/components/_common/_index'
-import PortfolioDetail from '@/components/templates/PortfolioDetail'
+import { LoginLayout, Auth } from '@/components/_common'
+import { PortfolioDetail } from '@/components/templates'
 
 const PortfolioPostPage: NextPage = () => {
   const { data: session } = useSession()
 
   if (!session) {
     return (
-      <Layout title="Login">
+      <LoginLayout title='Login'>
         <Auth />
-      </Layout>
+      </LoginLayout>
     )
   }
 

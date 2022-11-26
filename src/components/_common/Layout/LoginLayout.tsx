@@ -6,7 +6,10 @@ type Props = {
   children: ReactNode
 }
 
-export const Layout: FC<Props> = ({ children, title = 'PortfolioApp' }) => {
+export const LoginLayout: FC<Props> = ({
+  children,
+  title = 'PortfolioApp',
+}) => {
   return (
     <>
       <Head>

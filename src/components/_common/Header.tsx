@@ -1,6 +1,11 @@
 import React, { FC } from 'react'
 import { signOut } from 'next-auth/react'
-import { PencilIcon, PencilSquareIcon } from '@heroicons/react/24/solid'
+import {
+  ArrowLeftOnRectangleIcon,
+  PencilIcon,
+  PencilSquareIcon,
+  UserCircleIcon,
+} from '@heroicons/react/24/solid'
 import { Logo } from '@/components/atoms'
 import { useTranslation } from 'react-i18next'
 import { MenuGroup } from '@/components/organisms'
@@ -34,14 +39,14 @@ export const Header: FC = () => {
       name: t('common:Profile'),
       onClick: () => router.push(`/profile`),
       icon: (
-        <PencilIcon className='h-5 w-5 text-slate-400' aria-hidden='true' />
+        <UserCircleIcon className='h-5 w-5 text-slate-400' aria-hidden='true' />
       ),
     },
     {
       name: t('common:Logout'),
       onClick: () => signOut(),
       icon: (
-        <PencilSquareIcon
+        <ArrowLeftOnRectangleIcon
           className='h-5 w-5 text-slate-400'
           aria-hidden='true'
         />
@@ -49,7 +54,7 @@ export const Header: FC = () => {
     },
   ]
   return (
-    <header className='justify-between bg-slate-300 md:flex'>
+    <header className='flex justify-between border-b-2 border-gray-200'>
       <Logo />
 
       <div className='mr-4 flex justify-between space-x-4 p-4'>

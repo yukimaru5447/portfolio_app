@@ -37,7 +37,8 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
 
   return (
     <form onSubmit={isNew ? create : undefined}>
-      <header className='fixed z-10 flex w-screen justify-between border-b-2 border-gray-200 bg-slate-100 md:flex'>
+      {/* pagesでheaderを切り替えられるようにしたい */}
+      <header className='fixed z-10 flex flex w-screen justify-between border-b-2 border-gray-200 bg-slate-100'>
         <Logo />
         <div className='my-4 flex'>
           <SwitchGroup

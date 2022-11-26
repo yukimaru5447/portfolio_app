@@ -1,21 +1,15 @@
 import type { NextPage } from 'next'
 
-import { Footer, Header } from '@/components/_common/_index'
 import Home from '@/components/templates/Home'
-import { SearchBlock } from '@/components/organisms'
+import { PageLayout } from '@/components/_common'
 
 const HomePage: NextPage = () => {
   return (
-    <>
-      <Header />
-      <SearchBlock />
-
-      <main className='mt-5 mb-5 flex flex-col items-center justify-center space-y-4'>
+    <PageLayout>
+      <main className='mt-5 mb-5 flex flex-col items-center justify-center space-y-4 border-gray-200 bg-slate-100'>
         <Home />
       </main>
-
-      <Footer />
-    </>
+    </PageLayout>
   )
 }
 
