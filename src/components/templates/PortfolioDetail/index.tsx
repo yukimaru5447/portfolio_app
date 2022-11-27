@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
-import { TextField, TextArea, LinkBar, Logo, Loading } from '@/components/atoms'
+import { SubmitHeader } from '@/components/_common'
+import { TextField, TextArea, LinkBar, Loading } from '@/components/atoms'
 import { ImageField, SubmitButton } from '@/components/organisms'
 
 import useHooks from './hooks'
@@ -30,9 +31,7 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
 
   return (
     <form onSubmit={isNew ? create : undefined}>
-      <header className='fixed z-10 flex flex w-screen justify-between border-b-2 border-gray-200 bg-slate-100 px-32'>
-        <Logo />
-
+      <SubmitHeader>
         <SubmitButton
           isEdit={isEdit}
           watchIsPublished={watchIsPublished}
@@ -40,7 +39,7 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
           defaultValues={defaultValues}
           checkUnClickable={checkUnClickable}
         />
-      </header>
+      </SubmitHeader>
 
       <div className='flex flex-col items-center space-y-4 bg-slate-100 py-24'>
         {/* portfolio.imageが実装できたら変更 */}
