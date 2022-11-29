@@ -1,11 +1,11 @@
-import { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 
 import { ProfileDetail } from '@/components/templates'
 import { Auth } from '@/components/_common/Auth'
-import { LoginLayout } from '@/components/_common'
+import { LoginLayout, PageLayout } from '@/components/_common'
+import { NextPageWithLayout } from '@/pages/_app'
 
-const Profile: NextPage = () => {
+const ProfilePage: NextPageWithLayout = () => {
   // userIdを取得する
   const { data: session } = useSession()
   const userId = session?.user?.id || ''
@@ -21,4 +21,8 @@ const Profile: NextPage = () => {
   return <ProfileDetail userId={userId} />
 }
 
-export default Profile
+export default ProfilePage
+
+ProfilePage.getLayout = function getLayout(page: React.ReactElement) {
+  return <PageLayout>{page}</PageLayout>
+}

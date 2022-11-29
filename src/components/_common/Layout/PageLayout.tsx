@@ -7,7 +7,7 @@ type Props = {
 
 export const PageLayout: FC<Props> = ({ children }) => {
   return (
-    <div className='bg-slate-100'>
+    <div className='h-screen bg-slate-100'>
       <Header />
       <main>{children}</main>
       <Footer />
