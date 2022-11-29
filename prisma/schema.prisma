@@ -98,13 +98,13 @@ model Profile {
   lastNameKana  String?
   description   String?
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String @unique
-  resume   Resume?   @relation(fields: [resumeId], references: [id])
+  user     User    @relation(fields: [userId], references: [id])
+  userId   String  @unique
+  resume   Resume? @relation(fields: [resumeId], references: [id])
   resumeId String? @unique
 
-  experiences    Experience[]
-  educations     Education[]
+  experiences Experience[]
+  educations  Education[]
 }
 
 model Resume {
@@ -186,10 +186,10 @@ model Experience {
   // 職歴の終わり
   endedAt     DateTime
 
-  user     User   @relation(fields: [userId], references: [id])
-  userId   String
-  resume   Resume @relation(fields: [resumeId], references: [id])
-  resumeId String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  resume    Resume?  @relation(fields: [resumeId], references: [id])
+  resumeId  String?
   profile   Profile? @relation(fields: [profileId], references: [id])
   profileId String?
 }
@@ -208,10 +208,10 @@ model Education {
   // 学歴の終わり
   endedAt     DateTime
 
-  user     User   @relation(fields: [userId], references: [id])
-  userId   String
-  resume   Resume @relation(fields: [resumeId], references: [id])
-  resumeId String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  resume    Resume?  @relation(fields: [resumeId], references: [id])
+  resumeId  String?
   profile   Profile? @relation(fields: [profileId], references: [id])
   profileId String?
 }
@@ -228,8 +228,8 @@ model Certification {
   // 資格の終わり
   endedAt   DateTime
 
-  user     User   @relation(fields: [userId], references: [id])
+  user     User    @relation(fields: [userId], references: [id])
   userId   String
-  resume   Resume @relation(fields: [resumeId], references: [id])
-  resumeId String
+  resume   Resume? @relation(fields: [resumeId], references: [id])
+  resumeId String?
 }
