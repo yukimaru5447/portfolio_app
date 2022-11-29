@@ -1,5 +1,7 @@
 // https://github.com/TypeStrong/ts-node/issues/1062#issuecomment-1289772979
 import { PrismaClient } from '@prisma/client'
+import { createNewEducation } from './script/newEducation'
+import { createNewExperience } from './script/newExperience'
 import { createNewPortfolio } from './script/newPortfolio'
 import { createNewUser } from './script/newUser'
 
@@ -23,6 +25,20 @@ async function main() {
     console.log(
       `ユーザーに紐づく${numberOfPortfolios}個の投稿を作成しました🚀🚀`,
     )
+    return
+  }
+
+  if (process.argv[2] === 'newEducation') {
+    await createNewEducation(prisma)
+
+    console.log(`学歴を追加しました🚀`)
+    return
+  }
+
+  if (process.argv[2] === 'newExperience') {
+    await createNewExperience(prisma)
+
+    console.log(`職歴歴を追加しました🚀`)
     return
   }
 
