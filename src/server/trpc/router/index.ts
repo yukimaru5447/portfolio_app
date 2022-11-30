@@ -1,3 +1,4 @@
+export { CertificationRouter as certification } from './certification'
 export { portfolioRouter as portfolio } from './portfolio'
 export { ProfileRouter as profile } from './profile'
 export { EducationRouter as education } from './education'

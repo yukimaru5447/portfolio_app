@@ -6,7 +6,9 @@ import { ProfileCard } from '@/components/organisms'
 import useHooks from './hooks'
 
 const ProfileDetail: FC<{ userId: string }> = ({ userId }) => {
-  const { profile, educations, experiences } = useHooks({ userId })
+  const { profile, educations, experiences, certifications } = useHooks({
+    userId,
+  })
 
   return (
     <>
@@ -42,7 +44,16 @@ const ProfileDetail: FC<{ userId: string }> = ({ userId }) => {
                 )
               })}
           </Tab.Panel>
-          <Tab.Panel>Content 3</Tab.Panel>
+          <Tab.Panel>
+            {certifications &&
+              certifications.map(({ name, startedAt }) => {
+                return (
+                  <>
+                    資格名: {name} 取得日: {startedAt.toISOString()} <br />
+                  </>
+                )
+              })}
+          </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
     </>

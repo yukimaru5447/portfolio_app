@@ -1,5 +1,6 @@
 // https://github.com/TypeStrong/ts-node/issues/1062#issuecomment-1289772979
 import { PrismaClient } from '@prisma/client'
+import { createNewCertification } from './script/newCertification'
 import { createNewEducation } from './script/newEducation'
 import { createNewExperience } from './script/newExperience'
 import { createNewPortfolio } from './script/newPortfolio'
@@ -39,6 +40,13 @@ async function main() {
     await createNewExperience(prisma)
 
     console.log(`職歴歴を追加しました🚀`)
+    return
+  }
+
+  if (process.argv[2] === 'newCertification') {
+    await createNewCertification(prisma)
+
+    console.log(`資格を追加しました🚀`)
     return
   }
 

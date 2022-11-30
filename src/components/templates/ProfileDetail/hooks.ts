@@ -13,7 +13,11 @@ const useHooks = ({ userId }: { userId: string }) => {
     trpc.experience.getAlllExperienceByUserId.useQuery({
       userId,
     })
+  const { data: certifications } =
+    trpc.certification.getAlllCertificationByUserId.useQuery({
+      userId,
+    })
 
-  return { profile, educations, experiences }
+  return { profile, educations, experiences, certifications }
 }
 export default useHooks
