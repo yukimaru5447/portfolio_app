@@ -105,6 +105,7 @@ model Profile {
 
   experiences Experience[]
   educations  Education[]
+  certifications  Certification[]
 }
 
 model Resume {
@@ -232,4 +233,6 @@ model Certification {
   userId   String
   resume   Resume? @relation(fields: [resumeId], references: [id])
   resumeId String?
+  profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId String?
 }
