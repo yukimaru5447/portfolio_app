@@ -7,7 +7,7 @@ export const ExperienceRouter = t.router({
   getAlllExperienceByUserId: t.procedure
     .input(getExperienceSchema)
     .query(async ({ ctx, input: { userId } }) => {
-      const data = await ctx.prisma.education.findMany({
+      const data = await ctx.prisma.experience.findMany({
         where: { userId },
         select: selectExperience,
       })
