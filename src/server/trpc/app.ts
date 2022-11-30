@@ -2,9 +2,7 @@
 import { t } from './trpc'
 import * as router from './router'
 
-export const appRouter = t.router({
-  ...router,
-})
+export const appRouter = t.router({ ...router })
 
 // export type definition of API
 export type AppRouter = typeof appRouter

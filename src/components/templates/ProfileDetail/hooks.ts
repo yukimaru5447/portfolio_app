@@ -1,14 +1,17 @@
 import { trpc } from '@/utils/trpc'
 
 const useHooks = ({ userId }: { userId: string }) => {
-  const {
-    data: profile,
-    isLoading,
-    error,
-  } = trpc.profile.getProfileByUserId.useQuery({
+  const { data: profile } = trpc.profile.getProfileByUserId.useQuery({
     userId,
   })
+  const { data: education } = trpc.education.getAlllEducationByUserId.useQuery({
+    userId,
+  })
+  const { data: experience } =
+    trpc.experience.getAlllExperienceByUserId.useQuery({
+      userId,
+    })
 
-  return { profile, isLoading, error }
+  return { profile, education, experience }
 }
 export default useHooks

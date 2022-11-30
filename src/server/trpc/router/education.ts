@@ -1,15 +1,15 @@
-import { getProfileSchema } from '@/schema/profile'
+import { getEducationSchema } from '@/schema/education'
 import { Prisma } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import { t } from '../trpc'
 
-export const ProfileRouter = t.router({
-  getProfileByUserId: t.procedure
-    .input(getProfileSchema)
+export const EducationRouter = t.router({
+  getAlllEducationByUserId: t.procedure
+    .input(getEducationSchema)
     .query(async ({ ctx, input: { userId } }) => {
-      const data = await ctx.prisma.profile.findFirst({
+      const data = await ctx.prisma.education.findMany({
         where: { userId },
-        select: selectProfile,
+        select: selectEducation,
       })
 
       if (!data)
@@ -22,10 +22,9 @@ export const ProfileRouter = t.router({
     }),
 })
 
-const selectProfile = Prisma.validator<Prisma.ProfileSelect>()({
-  firstName: true,
-  firstNameKana: true,
-  lastName: true,
-  lastNameKana: true,
+const selectEducation = Prisma.validator<Prisma.EducationSelect>()({
+  name: true,
+  startedAt: true,
+  endedAt: true,
   description: true,
 })
