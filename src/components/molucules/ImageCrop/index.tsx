@@ -6,27 +6,32 @@ import {
   Slider,
   Button,
 } from '@mui/material'
-import Cropper from 'react-easy-crop'
-import { FC, useState } from 'react'
-import getCroppedImg from '../../../utils/cropImage'
+import Cropper, { Area } from 'react-easy-crop'
+import { Dispatch, FC, SetStateAction, useState } from 'react'
+import getCroppedImg from '@/utils/cropImage'
 
 type Props = {
   disabled: boolean
   photoURL: string
   rotation: number
-  setOpenCrop: any
-  setRotation: any
-  setPhotoURL: any
-  setCroppedAreaPixels: any
+  setOpenCrop: Dispatch<SetStateAction<boolean>>
+  setRotation: Dispatch<SetStateAction<number>>
+  setPhotoURL: Dispatch<SetStateAction<string>>
+  setCroppedAreaPixels: Dispatch<SetStateAction<Area>>
 }
 
 const ImageCropDialog: FC<Props> = ({ photoURL, setOpenCrop, setPhotoURL }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 })
   const [zoom, setZoom] = useState<number>(1)
   const [rotation, setRotation] = useState<number>(0)
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null)
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area>({
+    x: 0,
+    y: 0,
+    height: 0,
+    width: 0,
+  })
 
-  const cropComplete = (croppedArea: any, croppedAreaPixels: any) => {
+  const cropComplete = (croppedArea: any, croppedAreaPixels: Area) => {
     setCroppedAreaPixels(croppedAreaPixels)
   }
 
@@ -36,12 +41,14 @@ const ImageCropDialog: FC<Props> = ({ photoURL, setOpenCrop, setPhotoURL }) => {
 
   const cropImage = async () => {
     try {
-      const { file, url }: any = await getCroppedImg(
+      const CroppedImg: { url: string } | null = await getCroppedImg(
         photoURL,
         croppedAreaPixels,
         rotation,
       )
-      setPhotoURL(url)
+      if (!CroppedImg) return alert('イメージのアップロードに失敗しました')
+
+      setPhotoURL(CroppedImg.url)
       setOpenCrop(false)
     } catch (error) {
       console.log(error)
