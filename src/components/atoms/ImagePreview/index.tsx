@@ -1,22 +1,44 @@
 import Image from 'next/image'
 import { FC } from 'react'
-import Loading from '@/components/atoms/Loading'
-
-import useHooks from './hooks'
+import { Stack } from '@mui/material'
 
 type Props = {
-  image: File | null
-  height: number
   width: number
+  height: number
+  photoURL: string
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const ImagePreview: FC<Props> = ({ image, ...props }) => {
-  const { isLoading, url } = useHooks({ image })
-
-  if (isLoading) Loading
-  if (!image) return null
-
-  return <Image src={url} alt={image.name} {...props} />
+export const ImagePreview: FC<Props> = ({
+  width,
+  height,
+  photoURL,
+  handleChange,
+}) => {
+  return (
+    <Stack
+      direction='column'
+      justifyContent='center'
+      alignItems='center'
+      spacing={2}
+    >
+      <Image
+        src={photoURL}
+        alt='img'
+        style={{ width, height, position: 'relative' }}
+      />
+      <input
+        type='file'
+        onChange={(e) => handleChange(e)}
+        style={{
+          opacity: 0,
+          width,
+          height,
+          position: 'absolute',
+        }}
+      />
+    </Stack>
+  )
 }
 
 export default ImagePreview
