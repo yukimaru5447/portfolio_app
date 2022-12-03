@@ -4,42 +4,59 @@ import Image from 'next/image'
 
 import { ImageInput, ImagePreview } from '@/components/atoms'
 import useHooks from './hooks'
+import { Dialog } from '@mui/material'
+import ImageCrop from '@/components/molucules/ImageCrop'
 
-type Props = {
-  imageUrl?: string
-}
+const ImageField: FC = () => {
+  const {
+    portfolioImage,
+    disabled,
+    openCrop,
+    photoURL,
+    rotation,
+    setOpenCrop,
+    setRotation,
+    setPhotoURL,
+    setCroppedAreaPixels,
+    handleChange,
+  } = useHooks()
 
-const ImageField: FC<Props> = ({ imageUrl }) => {
-  const { portfolioImage, handleSetImage, handleResetImage } = useHooks()
-
-  return (
+  return !openCrop ? (
     <>
-      {imageUrl ? (
-        <Image src={imageUrl} height={328} width={640} alt={imageUrl} />
+      {photoURL ? (
+        <Image src={photoURL} width={640} height={328} alt={photoURL} />
       ) : (
-        <div className='relative h-60 w-2/3 rounded-xl bg-slate-300 pt-6'>
-          <ImageInput
-            className='absolute h-full w-full opacity-0'
-            onChange={handleSetImage}
-            disabled={portfolioImage ? true : false}
-          />
-          <div className='just flex items-center justify-center'>
-            {portfolioImage ? (
-              <div>
-                <button
-                  type='button'
-                  aria-label='Close'
-                  onClick={handleResetImage}
-                />
-                <ImagePreview image={portfolioImage} height={200} width={200} />
-              </div>
-            ) : (
-              <PhotoIcon className='absolute top-1/2 right-1/2 h-6 w-6' />
-            )}
-          </div>
+        <div>
+          {portfolioImage ? (
+            <ImagePreview
+              height={200}
+              width={200}
+              {...{ photoURL, handleChange }}
+            />
+          ) : (
+            <ImageInput
+              width={640}
+              height={328}
+              {...{ photoURL, handleChange }}
+            />
+          )}
         </div>
       )}
     </>
+  ) : (
+    <Dialog maxWidth='sm' open={openCrop}>
+      <ImageCrop
+        {...{
+          disabled,
+          photoURL,
+          rotation,
+          setOpenCrop,
+          setRotation,
+          setPhotoURL,
+          setCroppedAreaPixels,
+        }}
+      />
+    </Dialog>
   )
 }
 

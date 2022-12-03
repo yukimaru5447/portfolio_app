@@ -1,7 +1,13 @@
 import { FC } from 'react'
+import CircularProgress from '@mui/material/CircularProgress'
+import Box from '@mui/material/Box'
 
 const Loading: FC = () => {
-  return <p>ローディング中...</p>
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <CircularProgress />
+    </Box>
+  )
 }
 
 export default Loading

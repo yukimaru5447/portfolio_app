@@ -43,13 +43,7 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
 
       <div className='flex flex-col items-center space-y-4 bg-slate-100 py-24'>
         {/* portfolio.imageが実装できたら変更 */}
-        <ImageField
-          imageUrl={
-            portfolio
-              ? 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8'
-              : undefined
-          }
-        />
+        <ImageField />
         <TextField
           name='title'
           control={control}
