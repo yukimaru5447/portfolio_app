@@ -1,8 +1,7 @@
 import { FC } from 'react'
-import { Switch } from '@headlessui/react'
 import { Control, useController } from 'react-hook-form'
-
-import { SwitchButton } from '@/components/atoms'
+import { Switch } from '@mui/material'
+import FormControlLabel from '@mui/material/FormControlLabel'
 
 type Props = {
   name: string
@@ -28,12 +27,13 @@ const SwitchGroup: FC<Props> = ({
   })
 
   return (
-    <Switch.Group>
-      <div className='flex items-center justify-center'>
-        <SwitchButton value={value} onChange={onChange} disabled={disabled} />
-        <Switch.Label className='pl-2'>{label}</Switch.Label>
-      </div>
-    </Switch.Group>
+    <FormControlLabel
+      checked={value}
+      disabled={disabled}
+      onChange={onChange}
+      control={<Switch defaultChecked />}
+      label={label}
+    />
   )
 }
 

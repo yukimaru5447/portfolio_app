@@ -31,11 +31,9 @@ const SubmitButton: FC<Props> = ({
         disabled={isEdit}
       />
 
-      <Box sx={{ marginLeft: 2 }}>
-        <Button variant='contained' disabled={isEdit || checkUnClickable()}>
-          {watchIsPublished ? '投稿する' : '下書き保存'}
-        </Button>
-      </Box>
+      <Button variant='contained' disabled={isEdit || checkUnClickable()}>
+        {watchIsPublished ? '投稿する' : '下書き保存'}
+      </Button>
     </Box>
   )
 }
