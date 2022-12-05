@@ -9,7 +9,7 @@ type Props = {
 }
 
 const InputText: FC<Props> = React.forwardRef<HTMLInputElement, Props>(
-  function LinkBar({ sx, readOnly, placeholder, ...field }, ref) {
+  function InputText({ sx, readOnly, placeholder, ...field }, ref) {
     return (
       <Input
         type='text'

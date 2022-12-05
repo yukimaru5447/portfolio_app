@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { useController, Control } from 'react-hook-form'
-import Presentational from './TextField'
+import { InputText } from '@/components/atoms'
+import Box from '@mui/material/Box'
 
 type Props = {
   name: string
@@ -25,13 +26,14 @@ const TextField: FC<Props> = ({
   })
 
   return (
-    <div className='w-2/3'>
-      <Presentational
+    <Box sx={{ width: '67%' }}>
+      <InputText
         {...field}
+        sx={{ fontSize: 28 }}
         readOnly={readOnly}
         placeholder={placeholder}
       />
-    </div>
+    </Box>
   )
 }
 

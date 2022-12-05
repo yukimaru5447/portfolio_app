@@ -1,8 +1,9 @@
 import { FC } from 'react'
 
 import { SubmitHeader } from '@/components/_common'
-import { TextField, TextArea, Loading } from '@/components/atoms'
+import { TextArea, Loading } from '@/components/atoms'
 import { ImageField, SubmitButton } from '@/components/organisms'
+import { TextField } from '@/components/molucules'
 
 import useHooks from './hooks'
 import { LinkBar } from '@/components/molucules'

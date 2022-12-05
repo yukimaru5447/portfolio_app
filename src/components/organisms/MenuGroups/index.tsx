@@ -6,8 +6,8 @@ import {
   PencilSquareIcon,
   UserCircleIcon,
 } from '@heroicons/react/24/solid'
-import { MenuGroup } from '@/components/organisms'
 import useHooks from './hooks'
+import { MenuGroup } from '@/components/molucules'
 
 const MenuGroups: FC = () => {
   const { t, onTransitionPage } = useHooks()

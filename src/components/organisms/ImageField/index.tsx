@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { ImageInput, ImagePreview } from '@/components/atoms'
 import useHooks from './hooks'
 import { Dialog } from '@mui/material'
-import ImageCrop from '@/components/molucules/ImageCropDialog'
+import ImageCrop from '@/components/organisms/ImageCropDialog'
 
 const ImageField: FC = () => {
   const {

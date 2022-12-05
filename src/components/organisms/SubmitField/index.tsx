@@ -14,7 +14,7 @@ type Props = {
   checkUnClickable: () => boolean
 }
 
-const SubmitButton: FC<Props> = ({
+const SubmitField: FC<Props> = ({
   isEdit,
   control,
   defaultValues,
@@ -38,4 +38,4 @@ const SubmitButton: FC<Props> = ({
   )
 }
 
-export default SubmitButton
+export default SubmitField
