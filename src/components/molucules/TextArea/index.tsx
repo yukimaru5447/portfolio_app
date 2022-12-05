@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import Presentational from './TextArea'
+import { TextAreaInput } from '@/components/atoms'
 import { useController, Control } from 'react-hook-form'
 
 type Props = {
@@ -25,11 +25,7 @@ export const TextArea: FC<Props> = ({
   })
   return (
     <div className='w-2/3'>
-      <Presentational
-        {...field}
-        readOnly={readOnly}
-        placeholder={placeholder}
-      />
+      <TextAreaInput readOnly={readOnly} placeholder={placeholder} {...field} />
     </div>
   )
 }

@@ -12,10 +12,10 @@ export const TextArea: FC<Props> = React.forwardRef<HTMLTextAreaElement, Props>(
       <TextareaAutosize
         minRows={10}
         className='h-full w-full rounded-xl px-6 py-6 text-2xl font-medium focus:outline-none'
-        {...fields}
         ref={ref}
         readOnly={readOnly}
         placeholder={placeholder}
+        {...fields}
       />
     )
   },

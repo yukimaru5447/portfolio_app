@@ -1,12 +1,14 @@
+import { ReactElement } from 'react'
+import { NextPage } from 'next'
+import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
 import type { Session } from 'next-auth'
-import type { AppProps } from 'next/app'
 
 import '@/styles/globals.css'
+import 'swiper/css'
+import 'swiper/css/navigation'
 import '@/utils/constant/i18n'
 import { trpc } from '@/utils/trpc'
-import { NextPage } from 'next'
-import { ReactElement } from 'react'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => ReactElement<any, any> | null

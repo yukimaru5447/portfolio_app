@@ -1,12 +1,12 @@
 import { FC } from 'react'
 
 import { SubmitHeader } from '@/components/_common'
-import { TextArea, Loading } from '@/components/atoms'
+import { Loading } from '@/components/atoms'
 import { ImageField, SubmitButton } from '@/components/organisms'
 import { TextField } from '@/components/molucules'
 
 import useHooks from './hooks'
-import { LinkBar } from '@/components/molucules'
+import { LinkBar, TextArea } from '@/components/molucules'
 
 type Props = {
   id?: string

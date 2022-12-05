@@ -28,10 +28,10 @@ const TextField: FC<Props> = ({
   return (
     <Box sx={{ width: '67%' }}>
       <InputText
-        {...field}
         sx={{ fontSize: 28 }}
         readOnly={readOnly}
         placeholder={placeholder}
+        {...field}
       />
     </Box>
   )

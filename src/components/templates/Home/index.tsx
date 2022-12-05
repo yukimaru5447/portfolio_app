@@ -1,12 +1,11 @@
 import { FC } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
-import 'swiper/css/navigation'
 import { Navigation } from 'swiper'
 
 import { PortfolioCard, SearchBlock } from '@/components/organisms'
-import useHooks from './hooks'
 import { Loading } from '@/components/atoms'
+
+import useHooks from './hooks'
 
 const Home: FC = () => {
   const { isLoading, error, portfolioGridRows } = useHooks()

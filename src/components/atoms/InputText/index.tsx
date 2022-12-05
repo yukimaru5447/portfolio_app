@@ -13,12 +13,12 @@ const InputText: FC<Props> = React.forwardRef<HTMLInputElement, Props>(
     return (
       <Input
         type='text'
-        {...field}
         disableUnderline
         sx={sx}
         ref={ref}
         readOnly={readOnly}
         placeholder={placeholder}
+        {...field}
       />
     )
   },

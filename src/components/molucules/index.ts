@@ -1,3 +1,5 @@
+export { default as ImagePreview } from './ImagePreview'
 export { default as LinkBar } from './LinkBar'
 export { default as MenuGroup } from './MenuGroup'
+export { default as TextArea } from './TextArea'
 export { default as TextField } from './TextField'

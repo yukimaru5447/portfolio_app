@@ -35,10 +35,10 @@ const LinkBar: FC<Props> = ({
       </Box>
 
       <InputText
-        {...field}
         sx={sx}
         readOnly={readOnly}
         placeholder={placeholder}
+        {...field}
       />
     </Box>
   )
