@@ -7,11 +7,11 @@ import {
   Button,
 } from '@mui/material'
 import Cropper, { Area } from 'react-easy-crop'
-import { Dispatch, FC, SetStateAction, useState } from 'react'
-import getCroppedImg from '@/utils/cropImage'
+import { Dispatch, FC, SetStateAction } from 'react'
+
+import useHooks from './hooks'
 
 type Props = {
-  disabled: boolean
   photoURL: string
   rotation: number
   setOpenCrop: Dispatch<SetStateAction<boolean>>
@@ -21,40 +21,21 @@ type Props = {
 }
 
 const ImageCropDialog: FC<Props> = ({ photoURL, setOpenCrop, setPhotoURL }) => {
-  const [crop, setCrop] = useState({ x: 0, y: 0 })
-  const [zoom, setZoom] = useState<number>(1)
-  const [rotation, setRotation] = useState<number>(0)
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area>({
-    x: 0,
-    y: 0,
-    height: 0,
-    width: 0,
+  const {
+    crop,
+    zoom,
+    rotation,
+    cropImage,
+    zoomPercent,
+    cropComplete,
+    setCrop,
+    setZoom,
+    setRotation,
+  } = useHooks({
+    photoURL,
+    setOpenCrop,
+    setPhotoURL,
   })
-
-  const cropComplete = (croppedArea: any, croppedAreaPixels: Area) => {
-    setCroppedAreaPixels(croppedAreaPixels)
-  }
-
-  const zoomPercent = (value: any) => {
-    return `${Math.round(value * 100)}`
-  }
-
-  const cropImage = async () => {
-    try {
-      const CroppedImg: { url: string } | null = await getCroppedImg(
-        photoURL,
-        croppedAreaPixels,
-        rotation,
-      )
-      if (!CroppedImg) return alert('イメージのアップロードに失敗しました')
-
-      setPhotoURL(CroppedImg.url)
-      setOpenCrop(false)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   return (
     <>
       <DialogContent
@@ -89,7 +70,7 @@ const ImageCropDialog: FC<Props> = ({ photoURL, setOpenCrop, setPhotoURL }) => {
               max={3}
               step={0.1}
               value={zoom}
-              onChange={(e, zoom) => setZoom(Number(zoom))}
+              onChange={(_, zoom) => setZoom(Number(zoom))}
             />
           </Box>
           <Box>
@@ -99,7 +80,7 @@ const ImageCropDialog: FC<Props> = ({ photoURL, setOpenCrop, setPhotoURL }) => {
               min={0}
               max={360}
               value={rotation}
-              onChange={(e, rotation) => setRotation(Number(rotation))}
+              onChange={(_, rotation) => setRotation(Number(rotation))}
             />
           </Box>
         </Box>
