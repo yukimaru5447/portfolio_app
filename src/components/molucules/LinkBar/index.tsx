@@ -1,14 +1,16 @@
-import { FC } from 'react'
-import Presentational from './LinkBar'
+import { CSSProperties, FC } from 'react'
+import { InputText } from '@/components/atoms'
 import { useController, Control } from 'react-hook-form'
+import { Box } from '@mui/material'
 
 type Props = {
   name: string
   control: Control<any>
   defaultValue: string
   label: string
-  readOnly: boolean
-  placeholder: string
+  sx?: CSSProperties
+  readOnly?: boolean
+  placeholder?: string
 }
 
 const LinkBar: FC<Props> = ({
@@ -16,8 +18,9 @@ const LinkBar: FC<Props> = ({
   defaultValue,
   control,
   label,
-  readOnly,
-  placeholder,
+  sx,
+  readOnly = false,
+  placeholder = '',
 }) => {
   // TODO: エラーハンドリング
   const { field } = useController({
@@ -26,16 +29,18 @@ const LinkBar: FC<Props> = ({
     defaultValue,
   })
   return (
-    <div className='flex w-2/3'>
-      <div className='text-ms flex h-12 w-28 items-center justify-center rounded-l-lg  bg-indigo-300 text-center font-semibold text-white'>
+    <Box sx={{ display: 'flex', width: '66%' }}>
+      <Box className='text-ms flex h-12 w-28 items-center justify-center rounded-l-lg  bg-indigo-300 text-center font-semibold text-white'>
         {label}
-      </div>
-      <Presentational
+      </Box>
+
+      <InputText
         {...field}
+        sx={sx}
         readOnly={readOnly}
         placeholder={placeholder}
       />
-    </div>
+    </Box>
   )
 }
 export default LinkBar

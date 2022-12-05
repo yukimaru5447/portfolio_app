@@ -1,10 +1,11 @@
 import { FC } from 'react'
 
 import { SubmitHeader } from '@/components/_common'
-import { TextField, TextArea, LinkBar, Loading } from '@/components/atoms'
+import { TextField, TextArea, Loading } from '@/components/atoms'
 import { ImageField, SubmitButton } from '@/components/organisms'
 
 import useHooks from './hooks'
+import { LinkBar } from '@/components/molucules'
 
 type Props = {
   id?: string
@@ -70,6 +71,15 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
           defaultValue={
             portfolio ? portfolio?.serviceUrl : defaultValues.serviceUrl
           }
+          sx={{
+            width: '100%',
+            backgroundColor: '#FFFFFF',
+            borderTopRightRadius: 8,
+            borderBottomRightRadius: 8,
+            paddingLeft: 1,
+            paddingRight: 1,
+            fontSize: '1.25rem',
+          }}
           label='URL'
           readOnly={isEdit}
           placeholder={isEdit ? '' : 'https://'}
@@ -80,6 +90,15 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
           defaultValue={
             portfolio ? portfolio?.githubUrl : defaultValues.githubUrl
           }
+          sx={{
+            width: '100%',
+            backgroundColor: '#FFFFFF',
+            borderTopRightRadius: 8,
+            borderBottomRightRadius: 8,
+            paddingLeft: 1,
+            paddingRight: 1,
+            fontSize: '1.25rem',
+          }}
           label='Github'
           readOnly={isEdit}
           placeholder={isEdit ? '' : 'https://'}
