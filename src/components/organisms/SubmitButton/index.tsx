@@ -1,6 +1,6 @@
 import { FC } from 'react'
+import { Box, Button } from '@mui/material'
 
-import { Button } from '@/components/atoms'
 import SwitchGroup from '@/components/organisms/SwitchGroup'
 import { Control } from 'react-hook-form'
 
@@ -22,7 +22,7 @@ const SubmitButton: FC<Props> = ({
   checkUnClickable,
 }) => {
   return (
-    <div className='my-4 flex'>
+    <Box sx={{ marginY: 2, display: 'flex' }}>
       <SwitchGroup
         name='isPublished'
         label={isEdit ? '公開中' : '公開する'}
@@ -30,22 +30,13 @@ const SubmitButton: FC<Props> = ({
         defaultValue={defaultValues.isPublished}
         disabled={isEdit}
       />
-      <div className='ml-4'>
-        {watchIsPublished ? (
-          <Button
-            name='投稿する'
-            type='submit'
-            disabled={isEdit || checkUnClickable()}
-          />
-        ) : (
-          <Button
-            name='下書き保存'
-            type='submit'
-            disabled={isEdit || checkUnClickable()}
-          />
-        )}
-      </div>
-    </div>
+
+      <Box sx={{ marginLeft: 2 }}>
+        <Button variant='contained' disabled={isEdit || checkUnClickable()}>
+          {watchIsPublished ? '投稿する' : '下書き保存'}
+        </Button>
+      </Box>
+    </Box>
   )
 }
 
