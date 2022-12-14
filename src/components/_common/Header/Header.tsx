@@ -4,12 +4,7 @@ import { styled } from '@mui/system'
 import { Logo } from '@/components/atoms'
 import { MenuGroups } from '@/components/organisms'
 import Box from '@mui/material/Box'
-
-const StyledHeader = styled('header')(() => ({
-  display: 'flex',
-  justifyContent: 'space-between',
-  borderBottomWidth: '2px',
-}))
+import StyledHeader from '@/components/atoms/Styled/StyledHeader'
 
 const StyledMenuGroups = styled(Box)(({ theme }) => ({
   paddingTop: theme.spacing(2),
