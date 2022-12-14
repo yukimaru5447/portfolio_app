@@ -1,5 +1,7 @@
 import PhotoIcon from '@heroicons/react/24/outline/PhotoIcon'
-import { IconButton, Tooltip, Box } from '@mui/material'
+import Box from '@mui/material/Box'
+import Tooltip from '@mui/material/Tooltip'
+import IconButton from '@mui/material/IconButton'
 import { FC } from 'react'
 
 type Props = {

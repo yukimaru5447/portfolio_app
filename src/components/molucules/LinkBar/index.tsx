@@ -1,7 +1,7 @@
 import { CSSProperties, FC } from 'react'
 import { InputText } from '@/components/atoms'
 import { useController, Control } from 'react-hook-form'
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 import { styled } from '@mui/system'
 
 type Props = {

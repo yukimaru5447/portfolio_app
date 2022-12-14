@@ -1,10 +1,11 @@
 import { FC } from 'react'
 import Image from 'next/image'
 
-import { ImageInput, ImagePreview } from '@/components/atoms'
+import { ImageInput } from '@/components/atoms'
 import useHooks from './hooks'
-import { Dialog } from '@mui/material'
+import Dialog from '@mui/material/Dialog'
 import ImageCrop from '@/components/organisms/ImageCropDialog'
+import { ImagePreview } from '@/components/molucules'
 
 const ImageField: FC = () => {
   const {

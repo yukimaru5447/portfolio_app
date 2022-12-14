@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Control, useController } from 'react-hook-form'
-import { Switch } from '@mui/material'
+import Switch from '@mui/material/Switch'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
 type Props = {

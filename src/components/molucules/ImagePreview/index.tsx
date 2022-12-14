@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { FC } from 'react'
-import { Stack } from '@mui/material'
+import Stack from '@mui/material/Stack'
 
 type Props = {
   width: number

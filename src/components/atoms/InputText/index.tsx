@@ -1,4 +1,4 @@
-import { Input } from '@mui/material'
+import Input from '@mui/material/Input'
 import React, { CSSProperties } from 'react'
 import { FC } from 'react'
 
