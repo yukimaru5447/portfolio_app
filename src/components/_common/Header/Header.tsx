@@ -14,7 +14,7 @@ const StyledMenuGroups = styled(Box)(({ theme }) => ({
 
 export const Header: FC = () => {
   return (
-    <StyledHeader className='border-gray-200'>
+    <StyledHeader>
       <Logo />
       <StyledMenuGroups>
         <MenuGroups />
