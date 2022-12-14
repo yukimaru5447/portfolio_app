@@ -6,8 +6,15 @@ import {
   PencilSquareIcon,
   UserCircleIcon,
 } from '@heroicons/react/24/solid'
-import useHooks from './hooks'
+import { styled } from '@mui/system'
+import Stack from '@mui/material/Stack'
+
 import { MenuGroup } from '@/components/molucules'
+import useHooks from './hooks'
+
+const StyledStack = styled(Stack)(() => ({
+  display: 'flex',
+}))
 
 const MenuGroups: FC = () => {
   const { t, onTransitionPage } = useHooks()
@@ -48,13 +55,13 @@ const MenuGroups: FC = () => {
         />
       ),
     },
-    // idまたはnewの場合はヘッダーのコンポーネントを切り替える
   ]
+
   return (
-    <>
+    <StyledStack direction='row' spacing={4}>
       <MenuGroup items={itemsAboutPortfolio} menuName={t('common:Post')} />
       <MenuGroup items={itemsAboutMenu} menuName={t('common:Menu')} />
-    </>
+    </StyledStack>
   )
 }
 
