@@ -1,8 +1,15 @@
 import { FC } from 'react'
 import { Box, Button } from '@mui/material'
+import { styled } from '@mui/system'
 
 import SwitchGroup from '@/components/organisms/SwitchGroup'
 import { Control } from 'react-hook-form'
+
+const StyledSubmitField = styled(Box)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+  display: 'flex',
+}))
 
 type Props = {
   isEdit: boolean
@@ -22,7 +29,7 @@ const SubmitField: FC<Props> = ({
   checkUnClickable,
 }) => {
   return (
-    <Box sx={{ marginY: 2, display: 'flex' }}>
+    <StyledSubmitField>
       <SwitchGroup
         name='isPublished'
         label={isEdit ? '公開中' : '公開する'}
@@ -34,7 +41,7 @@ const SubmitField: FC<Props> = ({
       <Button variant='contained' disabled={isEdit || checkUnClickable()}>
         {watchIsPublished ? '投稿する' : '下書き保存'}
       </Button>
-    </Box>
+    </StyledSubmitField>
   )
 }
 

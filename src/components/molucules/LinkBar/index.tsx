@@ -2,6 +2,7 @@ import { CSSProperties, FC } from 'react'
 import { InputText } from '@/components/atoms'
 import { useController, Control } from 'react-hook-form'
 import { Box } from '@mui/material'
+import { styled } from '@mui/system'
 
 type Props = {
   name: string
@@ -12,6 +13,25 @@ type Props = {
   readOnly?: boolean
   placeholder?: string
 }
+
+const StyledLinkBar = styled(Box)(() => ({
+  display: 'flex',
+  width: '66%',
+}))
+
+const Label = styled(Box)(() => ({
+  height: '3rem',
+  width: '7rem',
+  color: '#FFFFFF',
+  fontSize: '0.875rem',
+  lineHeight: '1.25rem',
+  fontWeight: 600,
+  borderTopLeftRadius: '0.5rem',
+  borderBottomLeftRadius: '0.5rem',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+}))
 
 const LinkBar: FC<Props> = ({
   name,
@@ -29,10 +49,8 @@ const LinkBar: FC<Props> = ({
     defaultValue,
   })
   return (
-    <Box sx={{ display: 'flex', width: '66%' }}>
-      <Box className='text-ms flex h-12 w-28 items-center justify-center rounded-l-lg  bg-indigo-300 text-center font-semibold text-white'>
-        {label}
-      </Box>
+    <StyledLinkBar>
+      <Label className='bg-indigo-300'>{label}</Label>
 
       <InputText
         sx={sx}
@@ -40,7 +58,7 @@ const LinkBar: FC<Props> = ({
         placeholder={placeholder}
         {...field}
       />
-    </Box>
+    </StyledLinkBar>
   )
 }
 export default LinkBar
