@@ -11,6 +11,7 @@ import 'swiper/css/navigation'
 import '@/utils/constant/i18n'
 import { trpc } from '@/utils/trpc'
 import theme from '@/utils/theme'
+import CssBaseline from '@mui/material/CssBaseline'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => ReactElement<any, any> | null
@@ -29,6 +30,8 @@ const MyApp = ({
   return getLayout(
     <SessionProvider session={session}>
       <ThemeProvider theme={theme}>
+        {/* Kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
     </SessionProvider>,
