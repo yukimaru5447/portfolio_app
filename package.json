@@ -21,6 +21,7 @@
     "@headlessui/tailwindcss": "^0.1.1",
     "@heroicons/react": "^2.0.12",
     "@hookform/resolvers": "^2.9.10",
+    "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.0",
     "@next-auth/prisma-adapter": "^1.0.4",
     "@prisma/client": "^4.4.0",

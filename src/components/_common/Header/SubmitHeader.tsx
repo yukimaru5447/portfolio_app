@@ -5,7 +5,7 @@ import StyledHeader from '@/components/atoms/Styled/StyledHeader'
 
 export const SubmitHeader: FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <StyledHeader className='bg-slate-100'>
+    <StyledHeader>
       <Logo />
       {children}
     </StyledHeader>
