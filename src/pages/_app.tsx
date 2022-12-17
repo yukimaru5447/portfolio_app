@@ -27,14 +27,14 @@ const MyApp = ({
   pageProps: { session, ...pageProps },
 }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page)
-  return getLayout(
+  return (
     <SessionProvider session={session}>
       <ThemeProvider theme={theme}>
         {/* Kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
       </ThemeProvider>
-    </SessionProvider>,
+    </SessionProvider>
   )
 }
 
