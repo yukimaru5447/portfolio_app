@@ -5,6 +5,7 @@ const theme: Theme = createTheme({
   palette: {
     primary: {
       main: purple[500],
+      dark: purple[700],
     },
     grey,
     background: {
