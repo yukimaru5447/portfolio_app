@@ -1,26 +1,34 @@
 import { FC } from 'react'
-import Link from 'next/link'
-import { Link as MuiLink } from '@mui/material'
+import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 
-const StyledLogo = styled(MuiLink)(({ theme }) => ({
-  color: theme.palette.primary.main,
+import Link from '@/components/atoms/Link'
+import theme from '@/utils/theme'
+
+const StyledLogo = styled(Box)(({ theme }) => ({
   marginLeft: theme.spacing(2),
-  padding: '1rem',
-  fontSize: '1.5rem',
-  lineHeight: '2rem',
-  fontWeight: 700,
-  '&:hover': {
-    color: theme.palette.primary.dark,
-  },
+  padding: theme.spacing(2),
 }))
 
 // underline消したい
 const Logo: FC = () => {
   return (
-    <Link href='/' passHref>
-      <StyledLogo underline='none'>PortfolioApp</StyledLogo>
-    </Link>
+    <StyledLogo>
+      <Link
+        href='/'
+        sx={{
+          color: theme.palette.primary.main,
+          fontWeight: 700,
+          fontSize: '1.5rem',
+          lineHeight: '2rem',
+          '&:hover': {
+            color: theme.palette.primary.dark,
+          },
+        }}
+      >
+        PortfolioApp
+      </Link>
+    </StyledLogo>
   )
 }
 export default Logo
