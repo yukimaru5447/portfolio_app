@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { TextAreaInput } from '@/components/atoms'
+import TextAreaInput from '@/components/atoms/TextAreaInput'
 import { useController, Control } from 'react-hook-form'
 
 type Props = {

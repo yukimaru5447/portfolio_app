@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Tab } from '@headlessui/react'
 
-import { ProfileCard } from '@/components/organisms'
+import ProfileCard from '@/components/organisms/ProfileCard'
 
 import useHooks from './hooks'
 

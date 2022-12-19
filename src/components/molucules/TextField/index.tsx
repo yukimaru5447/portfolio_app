@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useController, Control } from 'react-hook-form'
-import { InputText } from '@/components/atoms'
+import InputText from '@/components/atoms/InputText'
 import Box from '@mui/material/Box'
 
 type Props = {

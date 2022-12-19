@@ -9,7 +9,7 @@ import {
 import { styled } from '@mui/system'
 import Stack from '@mui/material/Stack'
 
-import { MenuGroup } from '@/components/molucules'
+import MenuGroup from '@/components/molucules/MenuGroup'
 import useHooks from './hooks'
 
 const StyledStack = styled(Stack)(() => ({

@@ -2,8 +2,9 @@ import { FC } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
 
-import { PortfolioCard, SearchBlock } from '@/components/organisms'
-import { Loading } from '@/components/atoms'
+import Loading from '@/components/atoms/Loading'
+import PortfolioCard from '@/components/organisms/PortfolioCard'
+import SearchBlock from '@/components/organisms/SearchBlock'
 
 import useHooks from './hooks'
 

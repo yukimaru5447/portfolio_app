@@ -1,12 +1,14 @@
 import { FC } from 'react'
 
 import { SubmitHeader } from '@/components/_common'
-import { Loading } from '@/components/atoms'
-import { ImageField, SubmitButton } from '@/components/organisms'
-import { TextField } from '@/components/molucules'
+import Loading from '@/components/atoms/Loading'
+import TextField from '@/components/molucules/TextField'
+import LinkBar from '@/components/molucules/LinkBar'
+import ImageField from '@/components/organisms/ImageField'
+import SubmitField from '@/components/organisms/SubmitField'
+import TextArea from '@/components/molucules/TextArea'
 
 import useHooks from './hooks'
-import { LinkBar, TextArea } from '@/components/molucules'
 
 type Props = {
   id?: string
@@ -34,7 +36,7 @@ const PortfolioDetail: FC<Props> = ({ id }) => {
   return (
     <form onSubmit={isNew ? create : undefined}>
       <SubmitHeader>
-        <SubmitButton
+        <SubmitField
           isEdit={isEdit}
           watchIsPublished={watchIsPublished}
           control={control}

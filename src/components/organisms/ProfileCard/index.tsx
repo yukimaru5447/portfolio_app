@@ -1,4 +1,4 @@
-import { Loading } from '@/components/atoms'
+import Loading from '@/components/atoms/Loading'
 import Image from 'next/image'
 import { FC } from 'react'
 

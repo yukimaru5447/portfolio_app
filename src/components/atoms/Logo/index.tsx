@@ -10,7 +10,6 @@ const StyledLogo = styled(Box)(({ theme }) => ({
   padding: theme.spacing(2),
 }))
 
-// underline消したい
 const Logo: FC = () => {
   return (
     <StyledLogo>
