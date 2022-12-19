@@ -2,7 +2,7 @@ import type { NextPageWithLayout } from '@/pages/_app'
 import { useSession } from 'next-auth/react'
 
 import { LoginLayout, Auth } from '@/components/_common'
-import { PortfolioDetail } from '@/components/templates'
+import PortfolioDetail from '@/components/organisms/PortfolioDetail'
 
 const PortfolioPostPage: NextPageWithLayout = () => {
   const { data: session } = useSession()

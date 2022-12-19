@@ -1,9 +1,9 @@
 import { useSession } from 'next-auth/react'
 
-import { ProfileDetail } from '@/components/templates'
+import { NextPageWithLayout } from '@/pages/_app'
 import { Auth } from '@/components/_common/Auth'
 import { LoginLayout, PageLayout } from '@/components/_common'
-import { NextPageWithLayout } from '@/pages/_app'
+import ProfileDetail from '@/components/organisms/ProfileDetail'
 
 const ProfilePage: NextPageWithLayout = () => {
   // userIdを取得する

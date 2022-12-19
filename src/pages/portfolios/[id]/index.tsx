@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 
 import { LoginLayout, Auth } from '@/components/_common'
-import { PortfolioDetail } from '@/components/templates'
+import PortfolioDetail from '@/components/organisms/PortfolioDetail'
 
 const PortfolioDetailPage: NextPage = () => {
   const router = useRouter()
