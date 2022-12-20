@@ -1,19 +1,50 @@
+import Button from '@mui/material/Button'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { styled } from '@mui/system'
 import { signIn } from 'next-auth/react'
 import React, { FC } from 'react'
 
+const StyledCard = styled(Stack)(({ theme }) => ({
+  width: '50%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexDirection: 'column',
+  paddingTop: theme.spacing(5),
+  paddingBottom: theme.spacing(5),
+  backgroundColor: theme.palette.common.white,
+  borderRadius: theme.shape.borderRadius,
+}))
+
+const StyledTitle = styled(Typography)(({ theme }) => ({
+  textAlign: 'center',
+  fontWeight: 700,
+  color: theme.palette.primary.main,
+}))
+
+const ActionButton = styled(Button)(({ theme }) => ({
+  width: '80%',
+  borderRadius: '0.25rem',
+  fontSize: '0.875rem',
+  lineHeight: '1.25rem',
+  backgroundColor: theme.palette.grey[600],
+  paddingTop: theme.spacing(1),
+  paddingBottom: theme.spacing(1),
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(2),
+  color: theme.palette.common.white,
+  '&:hover': {
+    backgroundColor: theme.palette.grey[500],
+  },
+}))
+
 const AuthCard: FC = () => {
   return (
-    <div className='flex w-2/6 flex-col items-center justify-center space-y-6 rounded bg-white py-10 shadow'>
-      <h1 className='text-center text-2xl font-bold text-indigo-600'>
-        Welcome to PortfolioApp
-      </h1>
-      <button
-        className='w-4/5 rounded bg-gray-300 px-4 py-2 text-sm text-white hover:bg-gray-500 focus:ring-2 focus:ring-gray-700'
-        onClick={() => signIn()}
-      >
-        新規登録・ログイン
-      </button>
-    </div>
+    <StyledCard spacing={2}>
+      <StyledTitle variant='h4'>Welcome to PortfolioApp</StyledTitle>
+      <ActionButton onClick={() => signIn()}>新規登録・ログイン</ActionButton>
+    </StyledCard>
   )
 }
 
