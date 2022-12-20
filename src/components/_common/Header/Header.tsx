@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
+import Box from '@mui/material/Box'
 import { styled } from '@mui/system'
 
-import { Logo } from '@/components/atoms'
-import { MenuGroups } from '@/components/organisms'
-import Box from '@mui/material/Box'
+import Logo from '@/components/atoms/Logo'
 import StyledHeader from '@/components/atoms/Styled/StyledHeader'
+import MenuGroups from '@/components/organisms/MenuGroups'
 
 const StyledMenuGroups = styled(Box)(({ theme }) => ({
   paddingTop: theme.spacing(2),
