@@ -12,7 +12,7 @@ const StyledMenuGroups = styled(Box)(({ theme }) => ({
   marginRight: theme.spacing(4),
 }))
 
-export const Header: FC = () => {
+const Header: FC = () => {
   return (
     <StyledHeader>
       <Logo />
@@ -22,3 +22,5 @@ export const Header: FC = () => {
     </StyledHeader>
   )
 }
+
+export default Header

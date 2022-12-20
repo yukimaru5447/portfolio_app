@@ -1,5 +1,11 @@
 import React, { FC } from 'react'
+import { styled } from '@mui/system'
 
-export const Footer: FC = () => {
-  return <footer className='h-40 bg-slate-300' />
-}
+const StyledFooter = styled('footer')(({ theme }) => ({
+  height: '160px',
+  backgroundColor: theme.palette.grey[300],
+}))
+
+const Footer: FC = () => <StyledFooter />
+
+export default Footer

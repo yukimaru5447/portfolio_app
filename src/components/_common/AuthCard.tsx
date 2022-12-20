@@ -1,7 +1,7 @@
 import { signIn } from 'next-auth/react'
 import React, { FC } from 'react'
 
-export const Auth: FC = () => {
+const AuthCard: FC = () => {
   return (
     <div className='flex w-2/6 flex-col items-center justify-center space-y-6 rounded bg-white py-10 shadow'>
       <h1 className='text-center text-2xl font-bold text-indigo-600'>
@@ -16,3 +16,5 @@ export const Auth: FC = () => {
     </div>
   )
 }
+
+export default AuthCard

@@ -1,8 +1,9 @@
 import { useSession } from 'next-auth/react'
 
 import { NextPageWithLayout } from '@/pages/_app'
-import { Auth } from '@/components/_common/Auth'
-import { LoginLayout, PageLayout } from '@/components/_common'
+import PageLayout from '@/components/_common/Layout/PageLayout'
+import LoginLayout from '@/components/_common/Layout/LoginLayout'
+import AuthCard from '@/components/_common/AuthCard'
 import ProfileDetail from '@/components/organisms/ProfileDetail'
 
 const ProfilePage: NextPageWithLayout = () => {
@@ -13,7 +14,7 @@ const ProfilePage: NextPageWithLayout = () => {
   if (!session) {
     return (
       <LoginLayout title='Login'>
-        <Auth />
+        <AuthCard />
       </LoginLayout>
     )
   }

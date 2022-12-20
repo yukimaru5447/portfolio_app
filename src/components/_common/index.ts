@@ -1,6 +1,0 @@
-export { Auth } from './Auth'
-export { Header } from './Header/Header'
-export { SubmitHeader } from './Header/SubmitHeader'
-export { LoginLayout } from './Layout/LoginLayout'
-export { PageLayout } from './Layout/PageLayout'
-export { Footer } from './Footer'

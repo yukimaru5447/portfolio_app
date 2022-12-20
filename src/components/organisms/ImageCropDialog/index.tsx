@@ -1,3 +1,4 @@
+import { Dispatch, FC, SetStateAction } from 'react'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 import Box from '@mui/material/Box'
@@ -5,7 +6,6 @@ import Typography from '@mui/material/Typography'
 import Slider from '@mui/material/Slider'
 import Button from '@mui/material/Button'
 import Cropper, { Area } from 'react-easy-crop'
-import { Dispatch, FC, SetStateAction } from 'react'
 
 import useHooks from './hooks'
 

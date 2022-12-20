@@ -1,5 +1,5 @@
 import Home from '@/components/organisms/Home'
-import { PageLayout } from '@/components/_common'
+import PageLayout from '@/components/_common/Layout/PageLayout'
 
 import { NextPageWithLayout } from './_app'
 

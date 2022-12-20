@@ -2,7 +2,8 @@ import { FC, ReactNode } from 'react'
 import { styled } from '@mui/system'
 import Box from '@mui/material/Box'
 
-import { Footer, Header } from '@/components/_common'
+import Header from '@/components/_common/Header/Header'
+import Footer from '@/components/_common/Footer'
 
 type Props = {
   children: ReactNode
@@ -13,7 +14,7 @@ const StyledLayout = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
 }))
 
-export const PageLayout: FC<Props> = ({ children }) => {
+const PageLayout: FC<Props> = ({ children }) => {
   return (
     <StyledLayout>
       <Header />
@@ -22,3 +23,5 @@ export const PageLayout: FC<Props> = ({ children }) => {
     </StyledLayout>
   )
 }
+
+export default PageLayout

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { SubmitHeader } from '@/components/_common'
+import SubmitHeader from '@/components/_common/Header/SubmitHeader'
 import Loading from '@/components/atoms/Loading'
 import TextField from '@/components/molucules/TextField'
 import LinkBar from '@/components/molucules/LinkBar'

@@ -2,7 +2,8 @@ import type { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 
-import { LoginLayout, Auth } from '@/components/_common'
+import LoginLayout from '@/components/_common/Layout/LoginLayout'
+import AuthCard from '@/components/_common/AuthCard'
 import PortfolioDetail from '@/components/organisms/PortfolioDetail'
 
 const PortfolioDetailPage: NextPage = () => {
@@ -13,7 +14,7 @@ const PortfolioDetailPage: NextPage = () => {
   if (!session) {
     return (
       <LoginLayout title='Login'>
-        <Auth />
+        <AuthCard />
       </LoginLayout>
     )
   }
