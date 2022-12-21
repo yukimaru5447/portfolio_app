@@ -1,11 +1,9 @@
 import { FC } from 'react'
 import { signOut } from 'next-auth/react'
-import {
-  ArrowLeftOnRectangleIcon,
-  PencilIcon,
-  PencilSquareIcon,
-  UserCircleIcon,
-} from '@heroicons/react/24/solid'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import CreateIcon from '@mui/icons-material/Create'
+import EditIcon from '@mui/icons-material/Edit'
+import LogoutIcon from '@mui/icons-material/Logout'
 import { styled } from '@mui/system'
 import Stack from '@mui/material/Stack'
 
@@ -20,47 +18,33 @@ const MenuGroups: FC = () => {
   const { t, onTransitionPage } = useHooks()
   const itemsAboutPortfolio = [
     {
-      name: t('portfolio:AddPortfolio'),
+      label: t('portfolio:AddPortfolio'),
       onClick: () => onTransitionPage('/portfolios/new'),
-      icon: (
-        <PencilIcon className='h-5 w-5 text-slate-400' aria-hidden='true' />
-      ),
+      icon: <CreateIcon />,
     },
     {
-      name: t('portfolio:EditDraft'),
+      label: t('portfolio:EditDraft'),
       onClick: () => onTransitionPage('/portfolios/new'),
-      icon: (
-        <PencilSquareIcon
-          className='h-5 w-5 text-slate-400'
-          aria-hidden='true'
-        />
-      ),
+      icon: <EditIcon />,
     },
   ]
   const itemsAboutMenu = [
     {
-      name: t('common:Profile'),
+      label: t('common:Profile'),
       onClick: () => onTransitionPage(`/profile`),
-      icon: (
-        <UserCircleIcon className='h-5 w-5 text-slate-400' aria-hidden='true' />
-      ),
+      icon: <AccountCircleIcon />,
     },
     {
-      name: t('common:Logout'),
+      label: t('common:Logout'),
       onClick: () => signOut(),
-      icon: (
-        <ArrowLeftOnRectangleIcon
-          className='h-5 w-5 text-slate-400'
-          aria-hidden='true'
-        />
-      ),
+      icon: <LogoutIcon />,
     },
   ]
 
   return (
     <StyledStack direction='row' spacing={4}>
-      <MenuGroup items={itemsAboutPortfolio} menuName={t('common:Post')} />
-      <MenuGroup items={itemsAboutMenu} menuName={t('common:Menu')} />
+      <MenuGroup items={itemsAboutPortfolio} name={t('common:Post')} />
+      <MenuGroup items={itemsAboutMenu} name={t('common:Menu')} />
     </StyledStack>
   )
 }

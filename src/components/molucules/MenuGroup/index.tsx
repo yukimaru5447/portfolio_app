@@ -9,14 +9,15 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { StyledButton } from '@/components/atoms/Styled/StyledButton'
 
 import useHooks from './hooks'
+import Box from '@mui/material/Box'
 
 type Props = {
   items: {
-    name: string
+    label: string
     onClick: () => void
     icon: ReactNode
   }[]
-  menuName: string
+  name: string
 }
 
 const ItemButton = styled(Button)(() => ({
@@ -26,11 +27,17 @@ const ItemButton = styled(Button)(() => ({
   padding: 0,
 }))
 
-const StyledName = styled(Typography)(({ theme }) => ({
+const StyledIcon = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
   color: theme.palette.primary.main,
 }))
 
-const MenuGroup: FC<Props> = ({ items, menuName }) => {
+const StyledLabel = styled(Typography)(({ theme }) => ({
+  color: theme.palette.primary.main,
+}))
+
+const MenuGroup: FC<Props> = ({ items, name }) => {
   const { open, handleOpenMenu, handleCloseMenu, anchorEl } = useHooks()
 
   return (
@@ -40,18 +47,18 @@ const MenuGroup: FC<Props> = ({ items, menuName }) => {
         onClick={handleOpenMenu}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        {menuName}
+        {name}
       </StyledButton>
       <Menu anchorEl={anchorEl} open={open} onClose={handleCloseMenu}>
-        {items.map(({ name, onClick, icon }) => {
+        {items.map(({ label, onClick, icon }) => {
           return (
             <MenuItem
               component={ItemButton}
-              key={name}
+              key={label}
               onClick={onClick}
-              startIcon={icon}
+              startIcon={<StyledIcon>{icon}</StyledIcon>}
             >
-              <StyledName>{name}</StyledName>
+              <StyledLabel>{label}</StyledLabel>
             </MenuItem>
           )
         })}
