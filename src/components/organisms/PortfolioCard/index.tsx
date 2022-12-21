@@ -1,9 +1,10 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { styled } from '@mui/system'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
+
+import Link from '@/components/atoms/Link'
 
 type Props = {
   id: string
@@ -14,7 +15,6 @@ const StyledLink = styled(Link)(({ theme }) => ({
   display: 'block',
   overflow: 'hidden',
   borderRadius: theme.shape.borderRadius,
-  borderWidth: '2px',
 }))
 
 const StyledImage = styled(Image)(() => ({

@@ -5,6 +5,7 @@ import { styled } from '@mui/system'
 import Logo from '@/components/atoms/Logo'
 import StyledHeader from '@/components/atoms/Styled/StyledHeader'
 import MenuGroups from '@/components/organisms/MenuGroups'
+import SearchBlock from '@/components/organisms/SearchBlock'
 
 const StyledMenuGroups = styled(Box)(({ theme }) => ({
   paddingTop: theme.spacing(2),
@@ -14,8 +15,9 @@ const StyledMenuGroups = styled(Box)(({ theme }) => ({
 
 const Header: FC = () => {
   return (
-    <StyledHeader>
+    <StyledHeader sx={{ borderBottom: `1px solid #9dabb1` }}>
       <Logo />
+      <SearchBlock />
       <StyledMenuGroups>
         <MenuGroups />
       </StyledMenuGroups>

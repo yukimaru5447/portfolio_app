@@ -1,8 +1,8 @@
-import PhotoIcon from '@heroicons/react/24/outline/PhotoIcon'
+import { FC } from 'react'
+import PhotoIcon from '@mui/icons-material/Photo'
 import Box from '@mui/material/Box'
 import Tooltip from '@mui/material/Tooltip'
 import IconButton from '@mui/material/IconButton'
-import { FC } from 'react'
 
 type Props = {
   width: number

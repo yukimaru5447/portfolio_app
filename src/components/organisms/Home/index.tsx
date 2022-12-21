@@ -36,14 +36,12 @@ const Home: FC = () => {
 
   return (
     <>
-      <SearchBlock />
       <StyledGridTable>
         {portfolioGridRows &&
           portfolioGridRows.map((grid) => (
             <StyledGridRow key={grid.label}>
               <StyledGridLabel variant='h5'>{grid.label}</StyledGridLabel>
               <Swiper
-                spaceBetween={5}
                 slidesPerView={3}
                 navigation={true}
                 modules={[Navigation]}
