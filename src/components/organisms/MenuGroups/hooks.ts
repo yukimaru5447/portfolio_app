@@ -5,10 +5,10 @@ const useHooks = () => {
   const { t } = useTranslation(['common', 'home', 'portfolio'])
   const router = useRouter()
 
-  const onTransitionPage = (url: string) => {
+  const moveToPage = (url: string) => {
     router.push(url)
   }
 
-  return { t, onTransitionPage }
+  return { t, moveToPage }
 }
 export default useHooks

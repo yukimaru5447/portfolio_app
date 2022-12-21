@@ -15,23 +15,23 @@ const StyledStack = styled(Stack)(() => ({
 }))
 
 const MenuGroups: FC = () => {
-  const { t, onTransitionPage } = useHooks()
+  const { t, moveToPage } = useHooks()
   const itemsAboutPortfolio = [
     {
       label: t('portfolio:AddPortfolio'),
-      onClick: () => onTransitionPage('/portfolios/new'),
+      onClick: () => moveToPage('/portfolios/new'),
       icon: <CreateIcon />,
     },
     {
       label: t('portfolio:EditDraft'),
-      onClick: () => onTransitionPage('/portfolios/new'),
+      onClick: () => moveToPage('/portfolios/new'),
       icon: <EditIcon />,
     },
   ]
   const itemsAboutMenu = [
     {
       label: t('common:Profile'),
-      onClick: () => onTransitionPage(`/profile`),
+      onClick: () => moveToPage(`/profile`),
       icon: <AccountCircleIcon />,
     },
     {

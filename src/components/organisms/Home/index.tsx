@@ -1,12 +1,32 @@
 import { FC } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import { styled } from '@mui/system'
 
 import Loading from '@/components/atoms/Loading'
 import PortfolioCard from '@/components/organisms/PortfolioCard'
 import SearchBlock from '@/components/organisms/SearchBlock'
 
 import useHooks from './hooks'
+
+const StyledGridTable = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+  marginTop: theme.spacing(2.5),
+  marginBottom: theme.spacing(2.5),
+}))
+
+const StyledGridRow = styled(Box)(() => ({
+  width: '66%',
+}))
+
+const StyledGridLabel = styled(Typography)(() => ({
+  fontWeight: 700,
+}))
 
 const Home: FC = () => {
   const { isLoading, error, portfolioGridRows } = useHooks()
@@ -17,36 +37,29 @@ const Home: FC = () => {
   return (
     <>
       <SearchBlock />
-      <div className='mt-5 mb-5 flex flex-col items-center justify-center space-y-4'>
+      <StyledGridTable>
         {portfolioGridRows &&
           portfolioGridRows.map((grid) => (
-            <div
-              key={grid.label}
-              className='flex w-4/6 flex-col items-center justify-center'
-            >
-              <div className='w-full  text-2xl font-bold text-gray-600'>
-                {grid.label}
-              </div>
-              <div className='flex w-full justify-center'>
-                <Swiper
-                  spaceBetween={315}
-                  slidesPerView={3}
-                  navigation={true}
-                  modules={[Navigation]}
-                >
-                  {grid.rows &&
-                    grid.rows.map(
-                      ({ id, title }: { id: string; title: string }) => (
-                        <SwiperSlide key={id}>
-                          <PortfolioCard id={id} title={title} />
-                        </SwiperSlide>
-                      ),
-                    )}
-                </Swiper>
-              </div>
-            </div>
+            <StyledGridRow key={grid.label}>
+              <StyledGridLabel variant='h5'>{grid.label}</StyledGridLabel>
+              <Swiper
+                spaceBetween={315}
+                slidesPerView={3}
+                navigation={true}
+                modules={[Navigation]}
+              >
+                {grid.rows &&
+                  grid.rows.map(
+                    ({ id, title }: { id: string; title: string }) => (
+                      <SwiperSlide key={id}>
+                        <PortfolioCard id={id} title={title} />
+                      </SwiperSlide>
+                    ),
+                  )}
+              </Swiper>
+            </StyledGridRow>
           ))}
-      </div>
+      </StyledGridTable>
     </>
   )
 }
