@@ -1,9 +1,9 @@
+import { FC } from 'react'
+import { signIn } from 'next-auth/react'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { styled } from '@mui/system'
-import { signIn } from 'next-auth/react'
-import React, { FC } from 'react'
 
 const StyledCard = styled(Stack)(({ theme }) => ({
   width: '50%',
