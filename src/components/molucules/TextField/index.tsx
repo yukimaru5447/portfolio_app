@@ -4,6 +4,10 @@ import Box from '@mui/material/Box'
 
 import InputText from '@/components/atoms/InputText'
 
+import { styled } from '@mui/system'
+
+const StyledTextField = styled(Box)(() => ({ width: '67%' }))
+
 type Props = {
   name: string
   control: Control<any>
@@ -27,14 +31,14 @@ const TextField: FC<Props> = ({
   })
 
   return (
-    <Box sx={{ width: '67%' }}>
+    <StyledTextField>
       <InputText
         sx={{ fontSize: 28 }}
         readOnly={readOnly}
         placeholder={placeholder}
         {...field}
       />
-    </Box>
+    </StyledTextField>
   )
 }
 

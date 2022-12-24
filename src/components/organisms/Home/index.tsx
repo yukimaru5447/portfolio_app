@@ -7,7 +7,6 @@ import { styled } from '@mui/system'
 
 import Loading from '@/components/atoms/Loading'
 import PortfolioCard from '@/components/organisms/PortfolioCard'
-import SearchBlock from '@/components/organisms/SearchBlock'
 
 import useHooks from './hooks'
 

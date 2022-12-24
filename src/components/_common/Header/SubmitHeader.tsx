@@ -5,7 +5,7 @@ import StyledHeader from '@/components/atoms/Styled/StyledHeader'
 
 const SubmitHeader: FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <StyledHeader>
+    <StyledHeader sx={{ borderBottom: `1px solid #9dabb1` }}>
       <Logo />
       {children}
     </StyledHeader>

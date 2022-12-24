@@ -1,15 +1,15 @@
-import { CSSProperties, FC } from 'react'
+import { FC } from 'react'
 import InputText from '@/components/atoms/InputText'
 import { useController, Control } from 'react-hook-form'
 import Box from '@mui/material/Box'
 import { styled } from '@mui/system'
+import Typography from '@mui/material/Typography'
 
 type Props = {
   name: string
   control: Control<any>
   defaultValue: string
   label: string
-  sx?: CSSProperties
   readOnly?: boolean
   placeholder?: string
 }
@@ -19,18 +19,18 @@ const StyledLinkBar = styled(Box)(() => ({
   width: '66%',
 }))
 
-const Label = styled(Box)(() => ({
-  height: '3rem',
+const Label = styled(Typography)(({ theme }) => ({
+  paddingTop: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
   width: '7rem',
   color: '#FFFFFF',
-  fontSize: '0.875rem',
-  lineHeight: '1.25rem',
-  fontWeight: 600,
+  fontWeight: 700,
   borderTopLeftRadius: '0.5rem',
   borderBottomLeftRadius: '0.5rem',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  backgroundColor: theme.palette.primary.main,
 }))
 
 const LinkBar: FC<Props> = ({
@@ -38,7 +38,6 @@ const LinkBar: FC<Props> = ({
   defaultValue,
   control,
   label,
-  sx,
   readOnly = false,
   placeholder = '',
 }) => {
@@ -50,10 +49,18 @@ const LinkBar: FC<Props> = ({
   })
   return (
     <StyledLinkBar>
-      <Label className='bg-indigo-300'>{label}</Label>
+      <Label variant='inherit'>{label}</Label>
 
       <InputText
-        sx={sx}
+        sx={{
+          width: '100%',
+          backgroundColor: '#FFFFFF',
+          borderTopRightRadius: 8,
+          borderBottomRightRadius: 8,
+          paddingLeft: 1,
+          paddingRight: 1,
+          fontSize: '1.25rem',
+        }}
         readOnly={readOnly}
         placeholder={placeholder}
         {...field}

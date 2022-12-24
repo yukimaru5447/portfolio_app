@@ -2,9 +2,9 @@ import { FC } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { styled } from '@mui/system'
+import { useFormContext } from 'react-hook-form'
 
 import SwitchGroup from '@/components/organisms/SwitchGroup'
-import { Control } from 'react-hook-form'
 
 const StyledSubmitField = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(2),
@@ -15,7 +15,6 @@ const StyledSubmitField = styled(Box)(({ theme }) => ({
 type Props = {
   isEdit: boolean
   watchIsPublished: boolean
-  control: Control<any>
   defaultValues: {
     isPublished: boolean
   }
@@ -24,11 +23,11 @@ type Props = {
 
 const SubmitField: FC<Props> = ({
   isEdit,
-  control,
   defaultValues,
   watchIsPublished,
   checkUnClickable,
 }) => {
+  const { control } = useFormContext()
   return (
     <StyledSubmitField>
       <SwitchGroup

@@ -11,7 +11,7 @@ type Props = {
   id?: string
 }
 
-type DefaultValues = PostPortfolioInput
+export type DefaultValues = PostPortfolioInput
 
 const useHooks = ({ id }: Props) => {
   const router = useRouter()
@@ -35,10 +35,12 @@ const useHooks = ({ id }: Props) => {
     isPublished: false,
   }
 
-  const { control, watch, setValue, handleSubmit } = useForm<DefaultValues>({
+  const methods = useForm<DefaultValues>({
     resolver: zodResolver(postPortfolioSchema),
     defaultValues,
   })
+
+  const { watch, setValue, handleSubmit } = methods
 
   useEffect(() => {
     if (!portfolio) return
@@ -68,10 +70,10 @@ const useHooks = ({ id }: Props) => {
     isEdit,
     isLoading,
     error,
-    control,
     defaultValues,
     watchIsPublished,
     portfolio,
+    methods,
     create: handleSubmit(create),
     checkUnClickable,
   }
