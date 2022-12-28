@@ -1,6 +1,13 @@
-import Loading from '@/components/atoms/Loading'
-import Image from 'next/image'
 import { FC } from 'react'
+import { styled } from '@mui/material/styles'
+import Avatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import Typography from '@mui/material/Typography'
+
+import Loading from '@/components/atoms/Loading'
+import CardContent from '@mui/material/CardContent'
+import Stack from '@mui/material/Stack'
 
 type Props = {
   profile:
@@ -14,6 +21,36 @@ type Props = {
     | undefined
 }
 
+const StyledProfileCard = styled(Box)(({ theme }) => ({
+  marginTop: theme.spacing(4),
+  display: 'flex',
+  justifyContent: 'center',
+}))
+
+const StyledCard = styled(Card)(({ theme }) => ({
+  minWidth: 400,
+  borderRadius: theme.shape.borderRadius,
+}))
+
+const StyledAvatar = styled(Avatar)(() => ({ width: 60, height: 60 }))
+const StyledNameKana = styled(Box)(({ theme }) => ({
+  fontSize: 12,
+  color: theme.palette.grey[600],
+}))
+const StyledName = styled(Typography)(() => ({
+  fontSize: 20,
+  fontWeight: 700,
+}))
+const StyledDescripton = styled(Typography)(() => ({
+  fontSize: 16,
+  fontWeight: 500,
+}))
+
+const StyledCompanyName = styled(Typography)(() => ({
+  fontSize: 16,
+  fontWeight: 500,
+}))
+
 const ProfileCard: FC<Props> = ({ profile }) => {
   if (!profile) return <Loading />
 
@@ -21,31 +58,26 @@ const ProfileCard: FC<Props> = ({ profile }) => {
     profile
 
   return (
-    <div className='my-5 flex items-center justify-center'>
-      <div className='w-96 rounded-md bg-white'>
-        <div className='flex items-center px-4 py-5 sm:px-6'>
-          <Image
-            className='inline-block h-12 w-12 rounded-full ring-2 ring-white'
+    <StyledProfileCard>
+      <StyledCard elevation={2}>
+        <CardContent component={Stack} spacing={2}>
+          <StyledAvatar
             src='https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8'
             alt='ユーザーアバター'
-            width={100}
-            height={100}
           />
-          <div>
-            <h6 className='leading-nomal text-xs text-gray-500'>
+          <Box>
+            <StyledNameKana>
               {firstNameKana} {lastNameKana}
-            </h6>
-            <h3 className='text-lg font-medium leading-6 text-gray-900'>
+            </StyledNameKana>
+            <StyledName>
               {firstName} {lastName}
-            </h3>
-            <p className='mt-1 max-w-2xl text-sm text-gray-500'>
-              {description}
-            </p>
-          </div>
-          <div>まるまる株式会社</div>
-        </div>
-      </div>
-    </div>
+            </StyledName>
+          </Box>
+          <StyledDescripton>{description}</StyledDescripton>
+          <StyledCompanyName>まるまる株式会社</StyledCompanyName>
+        </CardContent>
+      </StyledCard>
+    </StyledProfileCard>
   )
 }
 

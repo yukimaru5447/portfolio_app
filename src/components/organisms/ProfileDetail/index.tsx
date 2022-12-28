@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import { Tab } from '@headlessui/react'
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
 
 import ProfileCard from '@/components/organisms/ProfileCard'
 
@@ -13,49 +14,37 @@ const ProfileDetail: FC<{ userId: string }> = ({ userId }) => {
   return (
     <>
       <ProfileCard profile={profile} />
-      <Tab.Group>
-        <Tab.List>
-          <Tab>学歴</Tab>
-          <Tab>職歴</Tab>
-          <Tab>資格</Tab>
-        </Tab.List>
-        <Tab.Panels>
-          <Tab.Panel>
-            {educations &&
-              educations.map(({ description, name, startedAt, endedAt }) => {
-                return (
-                  <>
-                    学校名: {name} 説明: {description} 入学日:{' '}
-                    {startedAt.toISOString()} 卒業日: {endedAt.toISOString()}{' '}
-                    <br />
-                  </>
-                )
-              })}
-          </Tab.Panel>
-          <Tab.Panel>
-            {experiences &&
-              experiences.map(({ description, name, startedAt, endedAt }) => {
-                return (
-                  <>
-                    会社名: {name} 説明: {description} 入社日:{' '}
-                    {startedAt.toISOString()} 退職日: {endedAt.toISOString()}{' '}
-                    <br />
-                  </>
-                )
-              })}
-          </Tab.Panel>
-          <Tab.Panel>
-            {certifications &&
-              certifications.map(({ name, startedAt }) => {
-                return (
-                  <>
-                    資格名: {name} 取得日: {startedAt.toISOString()} <br />
-                  </>
-                )
-              })}
-          </Tab.Panel>
-        </Tab.Panels>
-      </Tab.Group>
+      <Tabs>
+        <Tab label='学歴' />
+        <Tab label='職歴' />
+        <Tab label='資格' />
+      </Tabs>
+      {educations &&
+        educations.map(({ description, name, startedAt, endedAt }) => {
+          return (
+            <>
+              学校名: {name} 説明: {description} 入学日:{' '}
+              {startedAt.toISOString()} 卒業日: {endedAt.toISOString()} <br />
+            </>
+          )
+        })}
+      {experiences &&
+        experiences.map(({ description, name, startedAt, endedAt }) => {
+          return (
+            <>
+              会社名: {name} 説明: {description} 入社日:{' '}
+              {startedAt.toISOString()} 退職日: {endedAt.toISOString()} <br />
+            </>
+          )
+        })}
+      {certifications &&
+        certifications.map(({ name, startedAt }) => {
+          return (
+            <>
+              資格名: {name} 取得日: {startedAt.toISOString()} <br />
+            </>
+          )
+        })}
     </>
   )
 }

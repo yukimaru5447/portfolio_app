@@ -26,6 +26,7 @@
     "@trpc/client": "^10.7.0",
     "@trpc/next": "^10.7.0",
     "@trpc/react": "^9.27.4",
+    "@trpc/react-query": "^10.7.0",
     "@trpc/server": "^10.7.0",
     "clsx": "^1.2.1",
     "i18next": "^22.0.4",
