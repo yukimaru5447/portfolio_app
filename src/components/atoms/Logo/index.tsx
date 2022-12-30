@@ -6,8 +6,8 @@ import Link from '@/components/atoms/Link'
 import theme from '@/utils/theme'
 
 const StyledLogo = styled(Box)(({ theme }) => ({
-  marginLeft: theme.spacing(2),
-  padding: theme.spacing(2),
+  paddingTop: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
 }))
 
 const Logo: FC = () => {
@@ -25,7 +25,7 @@ const Logo: FC = () => {
           },
         }}
       >
-        PortfolioApp
+        🚀PortfolioApp
       </Link>
     </StyledLogo>
   )

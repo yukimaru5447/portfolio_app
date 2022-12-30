@@ -1,13 +1,13 @@
 import { FC } from 'react'
 import { styled } from '@mui/material/styles'
-import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
+import Stack from '@mui/material/Stack'
 
 import Loading from '@/components/atoms/Loading'
 import CardContent from '@mui/material/CardContent'
-import Stack from '@mui/material/Stack'
+import StyledAvatar from '@/components/atoms/Styled/StyledAvatar'
 
 type Props = {
   profile:
@@ -26,13 +26,11 @@ const StyledProfileCard = styled(Box)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
 }))
-
 const StyledCard = styled(Card)(({ theme }) => ({
   minWidth: 400,
   borderRadius: theme.shape.borderRadius,
 }))
 
-const StyledAvatar = styled(Avatar)(() => ({ width: 60, height: 60 }))
 const StyledNameKana = styled(Box)(({ theme }) => ({
   fontSize: 12,
   color: theme.palette.grey[600],
@@ -45,7 +43,6 @@ const StyledDescripton = styled(Typography)(() => ({
   fontSize: 16,
   fontWeight: 500,
 }))
-
 const StyledCompanyName = styled(Typography)(() => ({
   fontSize: 16,
   fontWeight: 500,
@@ -64,6 +61,8 @@ const ProfileCard: FC<Props> = ({ profile }) => {
           <StyledAvatar
             src='https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8'
             alt='ユーザーアバター'
+            width={60}
+            height={60}
           />
           <Box>
             <StyledNameKana>

@@ -42,11 +42,7 @@ const MenuGroup: FC<Props> = ({ items, name }) => {
 
   return (
     <>
-      <StyledButton
-        variant='contained'
-        onClick={handleOpenMenu}
-        endIcon={<KeyboardArrowDownIcon />}
-      >
+      <StyledButton variant='contained' onClick={handleOpenMenu}>
         {name}
       </StyledButton>
       <Menu anchorEl={anchorEl} open={open} onClose={handleCloseMenu}>
