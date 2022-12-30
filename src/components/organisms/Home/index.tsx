@@ -17,6 +17,22 @@ const StyledGridTable = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   marginTop: theme.spacing(2.5),
   marginBottom: theme.spacing(2.5),
+  '& .swiper-button-next': {
+    color: theme.palette.primary.main,
+    backgroundColor: theme.palette.common.white,
+    width: '52px',
+    height: '52px',
+    paddingLeft: 10,
+    borderRadius: '50%',
+  },
+  '& .swiper-button-prev': {
+    color: theme.palette.primary.main,
+    backgroundColor: theme.palette.common.white,
+    width: '52px',
+    height: '52px',
+    paddingRight: 10,
+    borderRadius: '50%',
+  },
 }))
 
 const StyledGridRow = styled(Box)(() => ({

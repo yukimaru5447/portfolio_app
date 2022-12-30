@@ -18,6 +18,9 @@ const theme: Theme = createTheme({
       default: purple[50],
       paper: common.white,
     },
+    text: {
+      primary: common.black,
+    },
   },
 })
 

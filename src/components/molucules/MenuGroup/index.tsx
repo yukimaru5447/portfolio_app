@@ -4,7 +4,6 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
 import { styled } from '@mui/material/styles'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 
 import { StyledButton } from '@/components/atoms/Styled/StyledButton'
 
