@@ -4,10 +4,6 @@ import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
 import type { Session } from 'next-auth'
 import { ThemeProvider } from '@mui/material/styles'
-
-// muiのstyleをoverrideしてしまうため、一旦コメントアウト
-// import '@/styles/globals.css'
-
 import 'swiper/css'
 import 'swiper/css/navigation'
 import '@/utils/constant/i18n'

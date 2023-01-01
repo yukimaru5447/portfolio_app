@@ -33,7 +33,7 @@ const Header: FC = () => {
   const userImage =
     'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8'
   return (
-    <StyledHeader sx={{ borderBottom: `1px solid #9dabb1` }}>
+    <StyledHeader sx={{ borderBottom: `1px solid #e0e0e0` }}>
       <Logo />
 
       <StyledMenuGroups direction='row' spacing={2}>

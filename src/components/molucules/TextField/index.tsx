@@ -6,7 +6,11 @@ import InputText from '@/components/atoms/InputText'
 
 import { styled } from '@mui/system'
 
-const StyledTextField = styled(Box)(() => ({ width: '67%' }))
+const StyledTextField = styled(Box)(({ theme }) => ({
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: '#FFFFFF',
+  width: '100%',
+}))
 
 type Props = {
   name: string
@@ -33,7 +37,10 @@ const TextField: FC<Props> = ({
   return (
     <StyledTextField>
       <InputText
-        sx={{ fontSize: 28 }}
+        sx={{
+          fontSize: 24,
+          fontWeight: 700,
+        }}
         readOnly={readOnly}
         placeholder={placeholder}
         {...field}

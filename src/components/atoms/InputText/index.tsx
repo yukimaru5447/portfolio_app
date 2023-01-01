@@ -1,4 +1,5 @@
 import Input from '@mui/material/Input'
+import { styled } from '@mui/system'
 import React, { CSSProperties } from 'react'
 import { FC } from 'react'
 
@@ -8,10 +9,14 @@ type Props = {
   placeholder?: string
 }
 
+const StyledInputText = styled(Input)(() => ({
+  '.MuiInputBase-input': { padding: 0 },
+}))
+
 const InputText: FC<Props> = React.forwardRef<HTMLInputElement, Props>(
   function InputText({ sx, readOnly, placeholder, ...field }, ref) {
     return (
-      <Input
+      <StyledInputText
         type='text'
         disableUnderline
         sx={sx}

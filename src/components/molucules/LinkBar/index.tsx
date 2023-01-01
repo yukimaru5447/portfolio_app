@@ -16,7 +16,6 @@ type Props = {
 
 const StyledLinkBar = styled(Box)(() => ({
   display: 'flex',
-  width: '66%',
 }))
 
 const Label = styled(Typography)(({ theme }) => ({

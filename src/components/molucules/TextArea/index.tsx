@@ -5,9 +5,7 @@ import { styled } from '@mui/system'
 
 import TextAreaInput from '@/components/atoms/TextAreaInput'
 
-const StyledTextArea = styled(Box)(() => ({
-  width: '66%',
-}))
+const StyledTextArea = styled(Box)(() => ({}))
 
 type Props = {
   name: string
