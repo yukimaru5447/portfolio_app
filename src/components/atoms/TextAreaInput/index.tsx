@@ -1,7 +1,8 @@
-import React, { FC } from 'react'
-import TextareaAutosize from 'react-textarea-autosize'
+import React, { CSSProperties, FC } from 'react'
+import Input from '@mui/material/Input'
 
 type Props = {
+  sx?: CSSProperties
   readOnly: boolean
   placeholder: string
 }
@@ -9,15 +10,17 @@ type Props = {
 export const TextAreaInput: FC<Props> = React.forwardRef<
   HTMLTextAreaElement,
   Props
->(function TextArea({ readOnly, placeholder, ...fields }, ref) {
+>(function TextArea({ sx, readOnly, placeholder, ...fields }, ref) {
   return (
-    <TextareaAutosize
-      minRows={10}
-      style={{ width: '100%' }}
-      ref={ref}
+    <Input
+      minRows={3}
+      sx={sx}
       readOnly={readOnly}
       placeholder={placeholder}
+      ref={ref}
       {...fields}
+      multiline
+      disableUnderline
     />
   )
 })
