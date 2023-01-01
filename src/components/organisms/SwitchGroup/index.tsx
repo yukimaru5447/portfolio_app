@@ -31,7 +31,7 @@ const SwitchGroup: FC<Props> = ({
       checked={value}
       disabled={disabled}
       onChange={onChange}
-      control={<Switch defaultChecked />}
+      control={<Switch />}
       label={label}
     />
   )

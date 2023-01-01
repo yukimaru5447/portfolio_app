@@ -4,10 +4,8 @@ import Stack from '@mui/material/Stack'
 import { styled } from '@mui/system'
 import Box from '@mui/material/Box'
 
-import TextField from '@/components/molucules/TextField'
-import LinkBar from '@/components/molucules/LinkBar'
+import CustomTextField from '@/components/molucules/CustomTextField'
 import ImageField from '@/components/organisms/ImageField'
-import TextArea from '@/components/molucules/TextArea'
 import { DefaultValues } from '../PortfolioDetail/hooks'
 
 const StyledPortfolioFormField = styled(Box)(() => ({
@@ -48,14 +46,14 @@ const PortfolioFormField: FC<Props> = ({
       <StyledStack spacing={2}>
         {/* portfolio.imageが実装できたら変更 */}
         <ImageField />
-        <TextField
+        <CustomTextField
           name='title'
           control={control}
           defaultValue={portfolio ? portfolio?.title : defaultValues.title}
           readOnly={isEdit}
           placeholder={isEdit ? '' : 'タイトル（32文字以内）'}
         />
-        <TextArea
+        <CustomTextField
           name='description'
           control={control}
           defaultValue={
@@ -67,8 +65,11 @@ const PortfolioFormField: FC<Props> = ({
               ? ''
               : 'ポートフォリオの説明（マークダウン記法を使用できます）'
           }
+          multiline
+          minRows={4}
+          inputProps={{ style: { padding: '16.5px 14px' } }}
         />
-        <LinkBar
+        <CustomTextField
           name='serviceUrl'
           control={control}
           defaultValue={
@@ -78,7 +79,7 @@ const PortfolioFormField: FC<Props> = ({
           readOnly={isEdit}
           placeholder={isEdit ? '' : 'https://'}
         />
-        <LinkBar
+        <CustomTextField
           name='githubUrl'
           control={control}
           defaultValue={

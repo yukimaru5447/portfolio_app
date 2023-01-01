@@ -1,7 +1,7 @@
-import { createTheme, Theme } from '@mui/material/styles'
+import { createTheme } from '@mui/material/styles'
 import { cyan, grey, purple, common } from '@mui/material/colors'
 
-const theme: Theme = createTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: purple[500],
@@ -17,6 +17,12 @@ const theme: Theme = createTheme({
     background: {
       default: purple[50],
       paper: common.white,
+    },
+    border: {
+      color: {
+        default: grey[400],
+        focus: purple[500],
+      },
     },
     text: {
       primary: common.black,

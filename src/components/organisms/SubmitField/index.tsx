@@ -38,7 +38,11 @@ const SubmitField: FC<Props> = ({
         disabled={isEdit}
       />
 
-      <Button variant='contained' disabled={isEdit || checkUnClickable()}>
+      <Button
+        type='submit'
+        variant='contained'
+        disabled={isEdit || checkUnClickable()}
+      >
         {watchIsPublished ? '投稿する' : '下書き保存'}
       </Button>
     </StyledSubmitField>
