@@ -70,8 +70,6 @@ model User {
   addresses      Address[]
   contacts       Contact[]
   histories    History[]
-  experiences    Experience[]
-  educations     Education[]
   certifications Certification[]
 }
 
@@ -105,8 +103,6 @@ model Profile {
   resumeId String? @unique
 
 histories    History[]
-  experiences Experience[]
-  educations  Education[]
   certifications  Certification[]
 }
 
@@ -135,8 +131,6 @@ model Resume {
   addresses      Address[]
   contacts       Contact[]
   histories    History[]
-  experiences    Experience[]
-  educations     Education[]
   certifications Certification[]
 }
 
@@ -184,50 +178,6 @@ model History {
   name        String
   description String
   startedAt   DateTime
-  endedAt     DateTime
-
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
-  resume    Resume?  @relation(fields: [resumeId], references: [id])
-  resumeId  String?
-  profile   Profile? @relation(fields: [profileId], references: [id])
-  profileId String?
-}
-
-model Experience {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // 会社名
-  name        String
-  // 仕事の内容
-  description String
-  // 職歴の始まり
-  startedAt   DateTime
-  // 職歴の終わり
-  endedAt     DateTime
-
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
-  resume    Resume?  @relation(fields: [resumeId], references: [id])
-  resumeId  String?
-  profile   Profile? @relation(fields: [profileId], references: [id])
-  profileId String?
-}
-
-model Education {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // 学校
-  name        String
-  // 勉強の内容
-  description String
-  // 学歴の始まり
-  startedAt   DateTime
-  // 学歴の終わり
   endedAt     DateTime
 
   user      User     @relation(fields: [userId], references: [id])

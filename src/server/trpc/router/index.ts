@@ -1,6 +1,4 @@
 export { CertificationRouter as certification } from './certification'
-export { EducationRouter as education } from './education'
-export { ExperienceRouter as experience } from './experience'
 export { HistoryRouter as history } from './history'
 export { portfolioRouter as portfolio } from './portfolio'
 export { ProfileRouter as profile } from './profile'
