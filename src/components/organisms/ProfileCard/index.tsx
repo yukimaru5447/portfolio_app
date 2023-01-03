@@ -22,12 +22,9 @@ type Props = {
 }
 
 const StyledProfileCard = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(4),
-  display: 'flex',
-  justifyContent: 'center',
+  marginTop: theme.spacing(6),
 }))
 const StyledCard = styled(Card)(({ theme }) => ({
-  minWidth: 400,
   borderRadius: theme.shape.borderRadius,
 }))
 
