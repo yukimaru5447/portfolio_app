@@ -16,7 +16,11 @@ export type TabType = 'history' | 'certification'
 const StyledProfileDetailStack = styled(Stack)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
-  margin: theme.spacing(4),
+  minHeight: '100vh',
+  marginTop: theme.spacing(4),
+  marginBottom: theme.spacing(4),
+  marginRight: theme.spacing(16),
+  marginLeft: theme.spacing(16),
   '.MuiTab-root': {
     backgroundColor: theme.palette.common.white,
     borderRadius: theme.shape.borderRadius,
@@ -37,11 +41,9 @@ const StyledRightContentBox = styled(Box)(() => ({
 }))
 
 const ProfileDetail: FC<{ userId: string }> = ({ userId }) => {
-  const { profile, educations, certifications, value, handleChange } = useHooks(
-    {
-      userId,
-    },
-  )
+  const { profile, histories, certifications, value, handleChange } = useHooks({
+    userId,
+  })
 
   const tabs = [
     { label: '学歴・職歴', value: 'history' },
@@ -62,7 +64,7 @@ const ProfileDetail: FC<{ userId: string }> = ({ userId }) => {
           ))}
         </Tabs>
 
-        <HistoryCard educations={educations} value={value} />
+        <HistoryCard histories={histories} value={value} />
         <CertificationCard certifications={certifications} value={value} />
       </StyledLeftContentBox>
 

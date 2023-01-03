@@ -13,7 +13,7 @@ import { getDateYYYYM } from '@/utils/date'
 import { TabType } from '../ProfileDetail'
 
 type Props = {
-  educations:
+  histories:
     | {
         name: string
         startedAt: Date
@@ -29,6 +29,7 @@ export const StyledDateColumnBox = styled(Box)(({ theme }) => ({
   color: 'grey',
   textAlign: 'end',
   paddingTop: theme.spacing(1),
+  width: '88px',
 }))
 
 export const StyledDividerBox = styled(Box)<{
@@ -50,14 +51,14 @@ const StyledSchoolIcon = styled(SchoolIcon)(({ theme }) => ({
   padding: theme.spacing(1),
 }))
 
-const HistoryCard: FC<Props> = ({ educations, value }) => {
+const HistoryCard: FC<Props> = ({ histories, value }) => {
   return (
     <Paper elevation={3}>
       <TabPanel value={value} tabType='history'>
         <Divider orientation='vertical' />
 
-        {educations
-          ? educations.map(({ description, name, startedAt, endedAt }, idx) => {
+        {histories
+          ? histories.map(({ description, name, startedAt, endedAt }, idx) => {
               return (
                 <Box key={name}>
                   <Stack direction='row' spacing={1} sx={{ display: 'flex' }}>
@@ -71,7 +72,7 @@ const HistoryCard: FC<Props> = ({ educations, value }) => {
 
                       <StyledDividerBox
                         idx={idx}
-                        rowMaxLength={educations.length}
+                        rowMaxLength={histories.length}
                       />
                     </Box>
                     <Box sx={{ paddingTop: '8px' }}>
