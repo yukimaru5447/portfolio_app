@@ -1,8 +1,7 @@
 // https://github.com/TypeStrong/ts-node/issues/1062#issuecomment-1289772979
 import { PrismaClient } from '@prisma/client'
 import { createNewCertification } from './script/newCertification'
-import { createNewEducation } from './script/newEducation'
-import { createNewExperience } from './script/newExperience'
+import { createNewHistory } from './script/newHistory'
 import { createNewPortfolio } from './script/newPortfolio'
 import { createNewUser } from './script/newUser'
 
@@ -29,17 +28,10 @@ async function main() {
     return
   }
 
-  if (process.argv[2] === 'newEducation') {
-    await createNewEducation(prisma)
+  if (process.argv[2] === 'newHistory') {
+    await createNewHistory(prisma)
 
-    console.log(`学歴を追加しました🚀`)
-    return
-  }
-
-  if (process.argv[2] === 'newExperience') {
-    await createNewExperience(prisma)
-
-    console.log(`職歴歴を追加しました🚀`)
+    console.log(`学歴・職歴を追加しました🚀`)
     return
   }
 

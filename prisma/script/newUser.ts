@@ -47,7 +47,7 @@ export const createNewUser = async (prisma: PrismaClient) => {
       image: '',
       gender: 'MALE',
       userId: newUser.id,
-      experiences: {
+      histories: {
         create: [
           {
             name: '株式会社タロウ',
@@ -63,10 +63,6 @@ export const createNewUser = async (prisma: PrismaClient) => {
             endedAt: new Date('2010-10-07').toISOString(),
             userId: newUser.id,
           },
-        ],
-      },
-      educations: {
-        create: [
           {
             name: 'テスト学校',
             description: '初めまして',
