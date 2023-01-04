@@ -2,25 +2,12 @@ import React, { FC } from 'react'
 import { styled } from '@mui/system'
 import Stack from '@mui/material/Stack'
 import SearchIcon from '@mui/icons-material/Search'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import IconButton from '@mui/material/IconButton'
 
+import CircleAvatar from '@/components/atoms/CircleAvatar'
 import Logo from '@/components/atoms/Logo'
 import StyledHeader from '@/components/atoms/Styled/StyledHeader'
+import StyledIconButton from '@/components/atoms/Styled/StyledIconButton'
 import MenuGroups from '@/components/organisms/MenuGroups'
-import StyledAvatar from '@/components/atoms/Styled/StyledAvatar'
-
-const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
-  color: theme.palette.common.white,
-  borderRadius: 50,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  '&:hover': {
-    backgroundColor: theme.palette.primary.dark,
-  },
-}))
 
 const StyledMenuGroups = styled(Stack)(({ theme }) => ({
   display: 'flex',
@@ -41,18 +28,7 @@ const Header: FC = () => {
           <SearchIcon aria-label='search' fontSize='small' />
         </StyledIconButton>
 
-        {userImage ? (
-          <StyledAvatar
-            src={userImage}
-            alt='ユーザーアバター'
-            width={36}
-            height={36}
-          />
-        ) : (
-          <StyledIconButton>
-            <AccountCircleIcon aria-label='search' fontSize='small' />
-          </StyledIconButton>
-        )}
+        <CircleAvatar userImage={userImage} />
 
         <MenuGroups />
       </StyledMenuGroups>

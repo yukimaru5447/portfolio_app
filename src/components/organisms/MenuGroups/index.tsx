@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { signOut } from 'next-auth/react'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import CreateIcon from '@mui/icons-material/Create'
 import EditIcon from '@mui/icons-material/Edit'
 import LogoutIcon from '@mui/icons-material/Logout'
@@ -23,11 +22,6 @@ const MenuGroups: FC = () => {
     },
   ]
   const itemsAboutMenu = [
-    {
-      label: t('common:Profile'),
-      onClick: () => moveToPage(`/profile`),
-      icon: <AccountCircleIcon />,
-    },
     {
       label: t('common:Logout'),
       onClick: () => signOut(),
