@@ -32,7 +32,9 @@ export const StyledDateColumnBox = styled(Box)(({ theme }) => ({
   width: '88px',
 }))
 
-export const StyledDividerBox = styled(Box)<{
+export const StyledDividerBox = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'rowMaxLength',
+})<{
   idx: number
   rowMaxLength: number
 }>(({ idx, rowMaxLength }) => ({
